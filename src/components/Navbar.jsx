@@ -1,17 +1,18 @@
-import "./Navbar.css";
+import './Navbar.css';
+import { Link } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <nav className="navbar">
-      <h2>Skill Exchange</h2>
+    return (
+        <nav className="navbar">
+            <h2>Skill Exchange</h2>
 
-      <div className="navbar-links">
-        <a href="/">Home</a>
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      </div>
-    </nav>
-  );
+            <div className="navbar-links">
+                <Link to="/">Home</Link>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+            </div>
+        </nav>
+    );
 }
 
 export default Navbar;

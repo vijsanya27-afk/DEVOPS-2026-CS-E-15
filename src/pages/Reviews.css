@@ -1,0 +1,39 @@
+.reviews-page {
+  min-height: 100vh;
+  padding: 50px;
+  background: #f5f7fb;
+  text-align: center;
+}
+
+.reviews-page h1 {
+  font-size: 36px;
+  color: #1f2937;
+  margin-bottom: 35px;
+}
+
+.review-card {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.review-card h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: #1f2937;
+}
+
+.review-card p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.review-card p:first-of-type {
+  color: #f59e0b;
+  font-size: 20px;
+}
