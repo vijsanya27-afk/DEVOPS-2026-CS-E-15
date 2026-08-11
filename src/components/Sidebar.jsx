@@ -1,17 +1,18 @@
-function Sidebar() {
+import React from 'react';
+import './Sidebar.css';
+
+const Sidebar = () => {
   return (
-    <aside>
-      <h2>SkillExchange</h2>
-
-      <nav>
-        <p>Dashboard</p>
-        <p>Profile</p>
-        <p>Skills</p>
-        <p>Search</p>
-        <p>Reviews</p>
-      </nav>
+    <aside className="sidebar">
+      <ul className="sidebar-menu">
+        <li className="active">Dashboard</li>
+        <li>Profile</li>
+        <li>Skills</li>
+        <li>Search</li>
+        <li>Reviews</li>
+      </ul>
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
