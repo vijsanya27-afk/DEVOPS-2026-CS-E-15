@@ -1,0 +1,57 @@
+.exchange-history {
+    padding: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #222;
+  }
+  
+  .exchange-history h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #222 !important;
+  }
+  
+  .exchange-history > p {
+    color: #555 !important;
+    margin-bottom: 30px;
+  }
+  
+  .exchange-history-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .exchange-history-card h2 {
+    margin-bottom: 20px;
+    color: #333 !important;
+  }
+  
+  .history-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    color: #222 !important;
+  }
+  
+  .history-item p {
+    margin: 8px 0;
+    color: #222 !important;
+  }
+  
+  .history-item strong {
+    color: #111 !important;
+  }
+  
+  @media (max-width: 768px) {
+    .exchange-history {
+      padding: 20px;
+    }
+  
+    .exchange-history-card {
+      padding: 18px;
+    }
+  }
