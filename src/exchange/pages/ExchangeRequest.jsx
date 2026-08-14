@@ -1,6 +1,17 @@
+import { useState } from "react";
 import ExchangeLayout from "../components/ExchangeLayout";
+import RequestModal from "../components/RequestModal";
 import "./ExchangeRequest.css";
+
 function ExchangeRequest() {
+  const [showModal, setShowModal] = useState(false);
+
+  const request = {
+    name: "Priya",
+    skill: "Python",
+    status: "Pending",
+  };
+
   return (
     <ExchangeLayout>
       <div className="exchange-request">
@@ -29,8 +40,17 @@ function ExchangeRequest() {
             />
           </div>
 
-          <button>Send Request</button>
+          <button onClick={() => setShowModal(true)}>
+            Send Request
+          </button>
         </div>
+
+        {showModal && (
+          <RequestModal
+            request={request}
+            onClose={() => setShowModal(false)}
+          />
+        )}
       </div>
     </ExchangeLayout>
   );
