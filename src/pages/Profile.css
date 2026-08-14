@@ -1,0 +1,108 @@
+/* Container Override */
+div.profile-page-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  min-height: 80vh !important;
+  padding: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Card Styling Force Fix */
+div.profile-card {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  padding: 30px !important;
+  width: 100% !important;
+  max-width: 480px !important; /* Fixed width for card */
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+div.profile-card h1 {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  font-size: 1.8rem !important;
+  color: #222 !important;
+  text-align: center !important;
+}
+
+/* Form Layout */
+.profile-form-edit {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+}
+
+.profile-form-edit .form-group {
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+}
+
+.profile-form-edit label {
+  font-weight: 600 !important;
+  margin-bottom: 6px !important;
+  color: #444 !important;
+  font-size: 0.9rem !important;
+}
+
+.profile-form-edit input,
+.profile-form-edit textarea {
+  width: 100% !important;
+  padding: 10px 12px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 8px !important;
+  font-size: 0.95rem !important;
+  box-sizing: border-box !important;
+  background-color: #fcfcfc !important;
+}
+
+.profile-form-edit input:focus,
+.profile-form-edit textarea:focus {
+  outline: none !important;
+  border-color: #007bff !important;
+  background-color: #fff !important;
+}
+
+/* Buttons Side-by-Side Fix */
+.form-button-group {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px !important;
+  margin-top: 15px !important;
+}
+
+.form-button-group button {
+  flex: 1 !important;
+  padding: 10px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+
+.form-button-group .save-btn {
+  background-color: #28a745 !important;
+  color: white !important;
+}
+
+.form-button-group .cancel-btn {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+.edit-btn {
+  width: 100% !important;
+  padding: 10px !important;
+  background-color: #007bff !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  margin-top: 15px !important;
+}
