@@ -6,10 +6,36 @@ import "./ExchangeRequest.css";
 function ExchangeRequest() {
   const [showModal, setShowModal] = useState(false);
 
+  const [yourSkill, setYourSkill] = useState("");
+  const [learningSkill, setLearningSkill] = useState("");
+
+  const [errors, setErrors] = useState({});
+
   const request = {
     name: "Priya",
-    skill: "Python",
+    skill: learningSkill || "Python",
     status: "Pending",
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newErrors = {};
+
+    if (!yourSkill.trim()) {
+      newErrors.yourSkill = "Please enter the skill you can teach.";
+    }
+
+    if (!learningSkill.trim()) {
+      newErrors.learningSkill =
+        "Please enter the skill you want to learn.";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      setShowModal(true);
+    }
   };
 
   return (
@@ -24,25 +50,59 @@ function ExchangeRequest() {
         <div className="request-card">
           <h2>Exchange Request</h2>
 
-          <div>
-            <label>Your Skill</label>
-            <input
-              type="text"
-              placeholder="Enter the skill you can teach"
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Your Skill</label>
 
-          <div>
-            <label>Skill You Want to Learn</label>
-            <input
-              type="text"
-              placeholder="Enter the skill you want to learn"
-            />
-          </div>
+              <input
+                type="text"
+                value={yourSkill}
+                onChange={(e) => {
+                  setYourSkill(e.target.value);
 
-          <button onClick={() => setShowModal(true)}>
-            Send Request
-          </button>
+                  if (errors.yourSkill) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      yourSkill: "",
+                    }));
+                  }
+                }}
+                placeholder="Enter the skill you can teach"
+              />
+
+              {errors.yourSkill && (
+                <p className="form-error">{errors.yourSkill}</p>
+              )}
+            </div>
+
+            <div>
+              <label>Skill You Want to Learn</label>
+
+              <input
+                type="text"
+                value={learningSkill}
+                onChange={(e) => {
+                  setLearningSkill(e.target.value);
+
+                  if (errors.learningSkill) {
+                    setErrors((prev) => ({
+                      ...prev,
+                      learningSkill: "",
+                    }));
+                  }
+                }}
+                placeholder="Enter the skill you want to learn"
+              />
+
+              {errors.learningSkill && (
+                <p className="form-error">
+                  {errors.learningSkill}
+                </p>
+              )}
+            </div>
+
+            <button type="submit">Send Request</button>
+          </form>
         </div>
 
         {showModal && (

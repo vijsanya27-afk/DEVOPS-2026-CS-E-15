@@ -58,3 +58,12 @@
   .request-card button:hover {
     background: #3730a3;
   }
+  .form-error {
+      color: #dc3545 !important;
+      font-size: 14px;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+  
