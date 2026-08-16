@@ -106,3 +106,28 @@ div.profile-card h1 {
   font-size: 1rem !important;
   margin-top: 15px !important;
 }
+/* Success Banner Styling */
+.success-banner {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 15px;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Error Text Styling */
+.error-text {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Input Border on Error (Optional but looks good) */
+.form-group input:invalid,
+.form-group textarea:invalid {
+  border-color: #dc3545;
+}
