@@ -1,4 +1,5 @@
 import ExchangeLayout from "../components/ExchangeLayout";
+import HistoryCard from "../components/HistoryCard";
 import "./ExchangeHistory.css";
 
 function ExchangeHistory() {
@@ -35,21 +36,14 @@ function ExchangeHistory() {
         <div className="exchange-history-card">
           <h2>My Exchange History</h2>
 
-          {exchanges.map((exchange) => (
-            <div className="history-item" key={exchange.id}>
-              <p>
-                <strong>Skill Offered:</strong> {exchange.skillOffered}
-              </p>
-
-              <p>
-                <strong>Skill Learned:</strong> {exchange.skillLearned}
-              </p>
-
-              <p>
-                <strong>Status:</strong> {exchange.status}
-              </p>
-            </div>
-          ))}
+          <div className="history-cards">
+            {exchanges.map((exchange) => (
+              <HistoryCard
+                key={exchange.id}
+                exchange={exchange}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </ExchangeLayout>
