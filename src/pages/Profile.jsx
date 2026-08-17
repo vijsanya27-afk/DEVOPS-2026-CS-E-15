@@ -13,6 +13,21 @@ function Profile() {
   const [errors, setErrors] = useState({});
   const [successMsg, setSuccessMsg] = useState('');
 
+  // Profile Completion Percentage Calculation
+  const getCompletionPercentage = () => {
+    let completedFields = 0;
+    const totalFields = 4;
+
+    if (profileData.name.trim().length > 0) completedFields++;
+    if (profileData.email.trim().length > 0 && !/[A-Z]/.test(profileData.email)) completedFields++;
+    if (profileData.role.trim().length > 0) completedFields++;
+    if (profileData.bio.trim().length >= 10) completedFields++;
+
+    return Math.round((completedFields / totalFields) * 100);
+  };
+
+  const completionPercentage = getCompletionPercentage();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfileData((prev) => ({
@@ -28,33 +43,32 @@ function Profile() {
   const validateForm = () => {
     let newErrors = {};
 
-    // 1. Name Validation (Only letters and spaces)
+    // 1. Name Validation
     if (!profileData.name.trim()) {
       newErrors.name = 'Name is required';
     } else if (!/^[a-zA-Z\s]+$/.test(profileData.name)) {
       newErrors.name = 'Name should contain only letters';
     }
 
-    // 2. Email Validation (Valid format & username must contain letters)
-   // 2. Email Validation (Must be lowercase, valid format & contain letters in username)
-if (!profileData.email.trim()) {
-  newErrors.email = 'Email is required';
-} else if (/[A-Z]/.test(profileData.email)) {
-  newErrors.email = 'Email must be in lowercase (no capital letters)';
-} else if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(profileData.email)) {
-  newErrors.email = 'Enter a valid email address';
-} else if (!/[a-z]/.test(profileData.email.split('@')[0])) {
-  newErrors.email = 'Email username must contain letters';
-}
+    // 2. Email Validation
+    if (!profileData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (/[A-Z]/.test(profileData.email)) {
+      newErrors.email = 'Email must be in lowercase (no capital letters)';
+    } else if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(profileData.email)) {
+      newErrors.email = 'Enter a valid email address';
+    } else if (!/[a-z]/.test(profileData.email.split('@')[0])) {
+      newErrors.email = 'Email username must contain letters';
+    }
 
-    // 3. Role Validation (Only letters and spaces)
+    // 3. Role Validation
     if (!profileData.role.trim()) {
       newErrors.role = 'Role is required';
     } else if (!/^[a-zA-Z\s]+$/.test(profileData.role)) {
       newErrors.role = 'Role should contain only letters';
     }
 
-    // 4. Bio Validation (At least 10 characters)
+    // 4. Bio Validation
     if (profileData.bio.trim().length < 10) {
       newErrors.bio = 'Bio must be at least 10 characters long';
     }
@@ -85,35 +99,66 @@ if (!profileData.email.trim()) {
   return (
     <div className="profile-page-wrapper">
       <div className="profile-card">
-        <h1>My Profile</h1>
+        
+        {/* Header Title & Avatar */}
+        <div className="profile-header">
+          {!isEditing && (
+            <div className="avatar-circle">
+              {profileData.name ? profileData.name.charAt(0).toUpperCase() : 'P'}
+            </div>
+          )}
+          <h1>{isEditing ? 'Edit Profile' : 'My Profile'}</h1>
+        </div>
+
+        {/* Dynamic Completion UI - Sirf Edit mode me live updates dikhayega */}
+        {isEditing && (
+          <div className="completion-card">
+            <div className="completion-header">
+              <span>Profile Completion</span>
+              <span className="completion-count">{completionPercentage}%</span>
+            </div>
+            <div className="progress-bar-bg">
+              <div 
+                className="progress-bar-fill" 
+                style={{ width: `${completionPercentage}%` }}
+              ></div>
+            </div>
+          </div>
+        )}
 
         {/* Conditional UI: Success Message Banner */}
         {successMsg && <div className="success-banner">{successMsg}</div>}
 
         {!isEditing ? (
+          /* VIEW PROFILE MODE */
           <div className="profile-details-view">
             <div className="detail-item">
-              <span className="detail-label">Name:</span>
-              <span className="detail-value">{profileData.name}</span>
+              <span className="detail-label">Name</span>
+              <div className="detail-value">{profileData.name}</div>
             </div>
+
             <div className="detail-item">
-              <span className="detail-label">Email:</span>
-              <span className="detail-value">{profileData.email}</span>
+              <span className="detail-label">Email</span>
+              <div className="detail-value">{profileData.email}</div>
             </div>
+
             <div className="detail-item">
-              <span className="detail-label">Role:</span>
-              <span className="detail-value">{profileData.role}</span>
+              <span className="detail-label">Role</span>
+              <div className="detail-value">{profileData.role}</div>
             </div>
+
             <div className="detail-item">
-              <span className="detail-label">Bio:</span>
-              <p className="detail-value bio-text">{profileData.bio}</p>
+              <span className="detail-label">Bio</span>
+              <div className="detail-value bio-text">{profileData.bio}</div>
             </div>
+
             <button className="edit-btn" onClick={() => setIsEditing(true)}>Edit Profile</button>
           </div>
         ) : (
+          /* EDIT PROFILE MODE */
           <form onSubmit={handleSubmit} className="profile-form-edit">
             <div className="form-group">
-              <label>Name:</label>
+              <label>Name</label>
               <input
                 type="text"
                 name="name"
@@ -125,7 +170,7 @@ if (!profileData.email.trim()) {
             </div>
 
             <div className="form-group">
-              <label>Email:</label>
+              <label>Email</label>
               <input
                 type="email"
                 name="email"
@@ -137,7 +182,7 @@ if (!profileData.email.trim()) {
             </div>
 
             <div className="form-group">
-              <label>Role:</label>
+              <label>Role</label>
               <input
                 type="text"
                 name="role"
@@ -149,7 +194,7 @@ if (!profileData.email.trim()) {
             </div>
 
             <div className="form-group">
-              <label>Bio:</label>
+              <label>Bio</label>
               <textarea
                 name="bio"
                 value={profileData.bio}
