@@ -1,0 +1,120 @@
+.sw-card-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.sw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sw-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.sw-count-badge {
+  font-size: 0.75rem;
+  background-color: #f3e8ff;
+  color: #7c3aed;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.sw-subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 4px 0 16px 0;
+  text-align: left; 
+}
+
+.sw-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sw-input {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.sw-input:focus {
+  border-color: #7c3aed;
+}
+
+.sw-add-btn {
+  padding: 10px 18px;
+  background-color: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.sw-add-btn:hover {
+  background-color: #6d28d9;
+}
+
+.sw-error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin: 0 0 10px 0;
+}
+
+.sw-empty-msg {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.sw-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sw-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f3e8ff;
+  color: #6b21a8;
+  border: 1px solid #e9d5ff;
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.sw-remove-btn {
+  background: transparent;
+  border: none;
+  color: #6b21a8;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 0;
+}
+
+.sw-remove-btn:hover {
+  color: #dc2626;
+}
