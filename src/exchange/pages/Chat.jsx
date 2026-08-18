@@ -1,31 +1,82 @@
 import { useState } from "react";
 import ExchangeLayout from "../components/ExchangeLayout";
+import ChatContact from "../components/ChatContact";
 import "./Chat.css";
 
 function Chat() {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
-
+  const [messages, setMessages] = useState({
+    Priya: [
+      {
+        id: 1,
+        sender: "Priya",
+        text: "Hi! Are you ready for the Python exchange?",
+      },
+      {
+        id: 2,
+        sender: "You",
+        text: "Yes, I am ready!",
+      },
+    ],
+  
+    Rahul: [
+      {
+        id: 3,
+        sender: "Rahul",
+        text: "Hi! Let's start our React exchange.",
+      },
+    ],
+  
+    Anjali: [
+      {
+        id: 4,
+        sender: "Anjali",
+        text: "Ready for the UI/UX exchange?",
+      },
+    ],
+  });
   const [selectedUser, setSelectedUser] = useState({
     name: "Priya",
     skill: "Python Exchange",
   });
 
-  const handleSend = (e) => {
+  const users = [
+    {
+      id: 1,
+      name: "Priya",
+      skill: "Python Exchange",
+    },
+    {
+      id: 2,
+      name: "Rahul",
+      skill: "React Exchange",
+    },
+    {
+      id: 3,
+      name: "Anjali",
+      skill: "UI/UX Exchange",
+    },
+  ];
+  const currentMessages = messages[selectedUser.name] || [];
+  const hasMessages = currentMessages.length > 0;
+    const handleSend = (e) => {
     e.preventDefault();
 
     if (!message.trim()) {
       return;
     }
 
-    setMessages((prev) => [
+    setMessages((prev) => ({
       ...prev,
-      {
-        id: Date.now(),
-        text: message,
-        sender: "You",
-      },
-    ]);
+      [selectedUser.name]: [
+        ...(prev[selectedUser.name] || []),
+        {
+          id: Date.now(),
+          text: message,
+          sender: "You",
+        },
+      ],
+    }));
 
     setMessage("");
   };
@@ -41,57 +92,19 @@ function Chat() {
 
         <div className="chat-container">
 
-          {/* Conversations */}
           <div className="chat-users">
             <h3>Conversations</h3>
 
-            <div
-              className={`chat-user ${
-                selectedUser.name === "Priya" ? "active" : ""
-              }`}
-              onClick={() =>
-                setSelectedUser({
-                  name: "Priya",
-                  skill: "Python Exchange",
-                })
-              }
-            >
-              <span>Priya</span>
-              <small>Python Exchange</small>
-            </div>
-
-            <div
-              className={`chat-user ${
-                selectedUser.name === "Rahul" ? "active" : ""
-              }`}
-              onClick={() =>
-                setSelectedUser({
-                  name: "Rahul",
-                  skill: "React Exchange",
-                })
-              }
-            >
-              <span>Rahul</span>
-              <small>React Exchange</small>
-            </div>
-
-            <div
-              className={`chat-user ${
-                selectedUser.name === "Anjali" ? "active" : ""
-              }`}
-              onClick={() =>
-                setSelectedUser({
-                  name: "Anjali",
-                  skill: "UI/UX Exchange",
-                })
-              }
-            >
-              <span>Anjali</span>
-              <small>UI/UX Exchange</small>
-            </div>
+            {users.map((user) => (
+              <ChatContact
+                key={user.id}
+                user={user}
+                selected={selectedUser.name === user.name}
+                onSelect={setSelectedUser}
+              />
+            ))}
           </div>
 
-          {/* Chat Box */}
           <div className="chat-box">
 
             <div className="chat-box-header">
@@ -100,12 +113,12 @@ function Chat() {
             </div>
 
             <div className="messages">
-              {messages.length === 0 ? (
+              {!hasMessages ? (
                 <p className="empty-chat">
                   No messages yet. Start a conversation.
                 </p>
               ) : (
-                messages.map((msg) => (
+                currentMessages.map((msg) => (
                   <div
                     className="message own-message"
                     key={msg.id}
@@ -117,7 +130,6 @@ function Chat() {
               )}
             </div>
 
-            {/* Message Form */}
             <form
               className="message-form"
               onSubmit={handleSend}
