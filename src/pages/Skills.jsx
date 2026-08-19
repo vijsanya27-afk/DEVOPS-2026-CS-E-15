@@ -11,6 +11,7 @@ function Skills() {
       <div className="skills-container">
         <SkillsOffered />
         <SkillsWanted />
+        <SkillMetadataUI />
       </div>
     </div>
   );

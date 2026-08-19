@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import SkillsOffered from "./components/SkillsOffered.jsx";
 import SkillsWanted from './components/SkillsWanted';
+import SkillMetadataUI from './components/SkillMetadataUI';
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/skills-offered" element={<SkillsOffered />} />
         <Route path="/skills-wanted" element={<SkillsWanted />} />
+        <Route path="/skill-metadata" element={<SkillMetadataUI />} />
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
