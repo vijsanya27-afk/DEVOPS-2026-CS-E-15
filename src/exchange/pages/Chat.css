@@ -1,0 +1,146 @@
+.chat-page {
+    padding: 30px;
+  }
+  
+  .chat-header {
+    margin-bottom: 25px;
+  }
+  
+  .chat-header h1 {
+    margin-bottom: 8px;
+  }
+  
+  .chat-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    min-height: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+  
+  .chat-users {
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .chat-user {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #f5f5f5;
+  }
+  
+  .chat-user.active {
+    background: #e8f0ff;
+  }
+  
+  .chat-user span {
+    display: block;
+    font-weight: 600;
+  }
+  
+  .chat-user small {
+    color: #666;
+  }
+  
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-box-header {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .chat-box-header h3 {
+    margin: 0 0 5px;
+  }
+  
+  .chat-box-header span {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .messages {
+    flex: 1;
+    padding: 20px;
+    min-height: 300px;
+  }
+  
+  .empty-chat {
+    text-align: center;
+    color: #888;
+    margin-top: 100px;
+  }
+  
+  .message {
+    max-width: 70%;
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: #e8f0ff;
+  }
+  
+  .message span {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .message p {
+    margin: 5px 0 0;
+  }
+  
+  .own-message {
+    margin-left: auto;
+  }
+  
+  .message-form {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+  }
+  
+  .message-form input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .message-form button {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #2563eb;
+    color: white;
+  }
+  
+  @media (max-width: 700px) {
+    .chat-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .chat-users {
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .message-form {
+      flex-direction: column;
+    }
+  }
+  .chat-header h1 {
+    color: #222 !important;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  
+  .chat-header p {
+    color: #333 !important;
+  }

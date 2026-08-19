@@ -12,7 +12,7 @@ import Profile from "./pages/Profile";
 import Skills from "./pages/Skills";
 import Search from "./pages/Search";
 import Reviews from "./pages/Reviews";
-
+import Chat from "./exchange/pages/Chat";
 import Requests from "./exchange/pages/Requests";
 import ExchangeHome from "./exchange/pages/ExchangeHome";
 import ExchangeRequest from "./exchange/pages/ExchangeRequest";
@@ -43,6 +43,7 @@ function App() {
         <Route path="/exchange/request" element={<ExchangeRequest />} />
         <Route path="/exchange/history" element={<ExchangeHistory />} />
         <Route path="/exchange/status" element={<ExchangeStatus />} />
+        <Route path="/exchange/chat" element={<Chat />} />
         </Routes>
     </BrowserRouter>
   );
