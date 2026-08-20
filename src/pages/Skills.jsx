@@ -1,6 +1,7 @@
 import React from "react";
 import SkillsOffered from "../components/SkillsOffered";
 import SkillsWanted from "../components/SkillsWanted";
+import SkillMetadataUI from "../components/SkillMetadataUI";
 import "./Skills.css";
 
 function Skills() {
