@@ -2,6 +2,7 @@ import { useState } from "react";
 import ExchangeLayout from "../components/ExchangeLayout";
 import ChatContact from "../components/ChatContact";
 import "./Chat.css";
+import MessageComposer from "../components/MessageComposer";
 
 function Chat() {
   const [message, setMessage] = useState("");
@@ -59,7 +60,7 @@ function Chat() {
   ];
   const currentMessages = messages[selectedUser.name] || [];
   const hasMessages = currentMessages.length > 0;
-    const handleSend = (e) => {
+  const handleSend = (e, selectedFile = null) => {
     e.preventDefault();
 
     if (!message.trim()) {
@@ -72,8 +73,14 @@ function Chat() {
         ...(prev[selectedUser.name] || []),
         {
           id: Date.now(),
-          text: message,
-          sender: "You",
+  text: message,
+  sender: "You",
+  file: selectedFile
+    ? {
+        name: selectedFile.name,
+        type: selectedFile.type,
+      }
+    : null,
         },
       ],
     }));
@@ -125,27 +132,22 @@ function Chat() {
                   >
                     <span>{msg.sender}</span>
                     <p>{msg.text}</p>
-                  </div>
-                ))
-              )}
-            </div>
+                  {msg.file && (
+                <div className="shared-file">
+                📎 {msg.file.name}
+      </div>
+)}
 
-            <form
-              className="message-form"
-              onSubmit={handleSend}
-            >
-              <input
-                type="text"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Type a message..."
-              />
+  </div>
+  ))
+  )}
+  </div>
 
-              <button type="submit">
-                Send
-              </button>
-            </form>
-
+  <MessageComposer
+  message={message}
+  setMessage={setMessage}
+  onSend={handleSend}
+/>
           </div>
         </div>
       </div>
