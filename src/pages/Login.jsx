@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -8,17 +9,31 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    if (email === "" || password === "") {
-      alert("Please enter email and password");
-      return;
-    }
+  if (email.trim() === "") {
+    alert("Please enter your email");
+    return;
+  }
 
-    alert("Login successful!");
+  if (!email.includes("@")) {
+    alert("Please enter a valid email");
+    return;
+  }
 
-    navigate("/dashboard");
-  };
+  if (password === "") {
+    alert("Please enter your password");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
+    return;
+  }
+
+  alert("Login successful!");
+  navigate("/dashboard");
+};
 
   return (
     <div className="login">
