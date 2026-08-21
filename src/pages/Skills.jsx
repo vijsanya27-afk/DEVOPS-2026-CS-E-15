@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SkillsOffered from '../components/SkillsOffered';
 import SkillsWanted from '../components/SkillsWanted';
 import SkillMetadataUI from '../components/SkillMetadataUI';
+import './Skills.css';
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState('offered');
