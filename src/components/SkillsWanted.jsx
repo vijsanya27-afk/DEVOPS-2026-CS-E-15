@@ -37,39 +37,42 @@ const SkillsWanted = () => {
   };
 
   return (
-    <div className="sw-card-container">
-      <div className="sw-header">
-        <h3 className="sw-title">Skills I Want to Learn</h3>
-        <span className="sw-count-badge">{wantedSkills.length}/10</span>
-      </div>
-      <p className="sw-subtitle">Select or add skills you want to gain</p>
+    /* Center alignment ke liye outer wrapper */
+    <div className="sw-page-wrapper">
+      <div className="sw-card-container">
+        <div className="sw-header">
+          <h3 className="sw-title">Skills I Want to Learn</h3>
+          <span className="sw-count-badge">{wantedSkills.length}/10</span>
+        </div>
+        <p className="sw-subtitle">Select or add skills you want to gain</p>
 
-      <form onSubmit={handleAddSkill} className="sw-form">
-        <input
-          type="text"
-          className="sw-input"
-          placeholder="e.g. Python, Figma, Docker"
-          value={inputSkill}
-          onChange={(e) => setInputSkill(e.target.value)}
-        />
-        <button type="submit" className="sw-add-btn">Add Skill</button>
-      </form>
+        <form onSubmit={handleAddSkill} className="sw-form">
+          <input
+            type="text"
+            className="sw-input"
+            placeholder="e.g. Python, Figma, Docker"
+            value={inputSkill}
+            onChange={(e) => setInputSkill(e.target.value)}
+          />
+          <button type="submit" className="sw-add-btn">Add Skill</button>
+        </form>
 
-      {error && <p className="sw-error">{error}</p>}
+        {error && <p className="sw-error">{error}</p>}
 
-      <div className="sw-badges-list">
-        {wantedSkills.length === 0 ? (
-          <p className="sw-empty-msg">No skills added yet.</p>
-        ) : (
-          wantedSkills.map((skill, index) => (
-            <SkillCard
-              key={index}
-              name={skill}
-              onRemove={handleRemoveSkill}
-              variant="wanted"
-            />
-          ))
-        )}
+        <div className="sw-badges-list">
+          {wantedSkills.length === 0 ? (
+            <p className="sw-empty-msg">No skills added yet.</p>
+          ) : (
+            wantedSkills.map((skill, index) => (
+              <SkillCard
+                key={index}
+                name={skill}
+                onRemove={handleRemoveSkill}
+                variant="wanted"
+              />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

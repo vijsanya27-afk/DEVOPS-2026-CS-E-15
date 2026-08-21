@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SkillCard from "./SkillCard"; // 1. SkillCard Import Kiya
 import "./SkillsOffered.css";
 
 const SkillsOffered = () => {
@@ -32,45 +33,51 @@ const SkillsOffered = () => {
     setSkills(skills.filter((skill) => skill !== skillToRemove));
   };
 
+  // 2. Edit functionality ke liye handler
+  const handleUpdateSkill = (oldName, newName) => {
+    if (!newName.trim()) return;
+    setSkills(skills.map((s) => (s === oldName ? newName.trim() : s)));
+  };
+
   return (
-    <div className="so-card-container">
-      <div className="so-header">
-        <h2 className="so-title">Skills Offered</h2>
-        <span className="so-count-badge">{skills.length}/10</span>
-      </div>
-      <p className="so-subtitle">Add skills you can teach or share</p>
+    <div className="so-page-wrapper">
+      <div className="so-card-container">
+        <div className="so-header">
+          <h2 className="so-title">Skills Offered</h2>
+          <span className="so-count-badge">{skills.length}/10</span>
+        </div>
+        <p className="so-subtitle">Add skills you can teach or share</p>
 
-      <form className="so-form" onSubmit={handleAddSkill}>
-        <input
-          type="text"
-          className="so-input"
-          placeholder="e.g. Node.js, UI/UX Design"
-          value={inputVal}
-          onChange={(e) => {
-            setInputVal(e.target.value);
-            setError("");
-          }}
-        />
-        <button type="submit" className="so-add-btn">
-          Add
-        </button>
-      </form>
+        <form className="so-form" onSubmit={handleAddSkill}>
+          <input
+            type="text"
+            className="so-input"
+            placeholder="e.g. Node.js, UI/UX Design"
+            value={inputVal}
+            onChange={(e) => {
+              setInputVal(e.target.value);
+              setError("");
+            }}
+          />
+          <button type="submit" className="so-add-btn">
+            Add
+          </button>
+        </form>
 
-      {error && <p className="so-error-message">{error}</p>}
+        {error && <p className="so-error-message">{error}</p>}
 
-      <div className="so-skills-list">
-        {skills.map((skill, index) => (
-          <span key={index} className="so-skill-chip">
-            {skill}
-            <button
-              type="button"
-              className="so-remove-btn"
-              onClick={() => handleRemoveSkill(skill)}
-            >
-              ×
-            </button>
-          </span>
-        ))}
+        {/* 3. SkillCard component render kiya */}
+        <div className="so-skills-list">
+          {skills.map((skill, index) => (
+            <SkillCard
+              key={index}
+              name={skill}
+              variant="offered"
+              onUpdate={handleUpdateSkill}
+              onDelete={handleRemoveSkill}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

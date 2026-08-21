@@ -118,3 +118,71 @@
 .sw-remove-btn:hover {
   color: #dc2626;
 }
+/* Layout & Large Card Size Overrides */
+
+.sw-page-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: calc(100vh - 70px) !important;
+  padding: 40px 20px !important;
+  box-sizing: border-box !important;
+}
+
+.sw-card-container {
+  width: 90% !important;
+  max-width: 800px !important;    /* Bada box size */
+  min-height: 450px !important;   /* Sufficient height */
+  padding: 48px !important;       /* Large internal spacing */
+  background-color: #ffffff !important;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #f0f0f0 !important;
+}
+
+/* Titles & Header */
+.sw-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.sw-title {
+  font-size: 2rem !important;
+  margin: 0 !important;
+}
+
+.sw-subtitle {
+  font-size: 1.1rem !important;
+  margin-top: 8px !important;
+  margin-bottom: 32px !important;
+}
+
+/* Form Controls */
+.sw-form {
+  display: flex !important;
+  gap: 16px !important;
+  margin-bottom: 24px !important;
+}
+
+.sw-input {
+  flex: 1 !important;
+  padding: 14px 18px !important;
+  font-size: 1.1rem !important;
+  border-radius: 10px !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.sw-add-btn {
+  padding: 14px 28px !important;
+  font-size: 1.1rem !important;
+  border-radius: 10px !important;
+}
+
+/* Badges List Container */
+.sw-badges-list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+}

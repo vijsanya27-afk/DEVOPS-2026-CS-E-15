@@ -18,6 +18,8 @@ import ExchangeHome from "./exchange/pages/ExchangeHome";
 import ExchangeRequest from "./exchange/pages/ExchangeRequest";
 import ExchangeHistory from "./exchange/pages/ExchangeHistory";
 import ExchangeStatus from "./exchange/pages/ExchangeStatus";
+import Sidebar from './components/Sidebar';
+import StatCard from './components/StatCard';
 import "./App.css";
 
 function App() {
