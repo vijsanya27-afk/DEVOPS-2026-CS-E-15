@@ -3,6 +3,7 @@ import ExchangeLayout from "../components/ExchangeLayout";
 import ChatContact from "../components/ChatContact";
 import "./Chat.css";
 import MessageComposer from "../components/MessageComposer";
+import TypingIndicator from "../components/TypingIndicator";
 
 function Chat() {
   const [message, setMessage] = useState("");
@@ -141,6 +142,7 @@ function Chat() {
   </div>
   ))
   )}
+  <TypingIndicator user={selectedUser.name} />
   </div>
 
   <MessageComposer
