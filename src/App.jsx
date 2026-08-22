@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
+
+import UserSearch from './components/UserSearch';
 import SkillsOffered from "./components/SkillsOffered.jsx";
 import SkillsWanted from './components/SkillsWanted';
 import SkillMetadataUI from './components/SkillMetadataUI';
@@ -18,8 +20,7 @@ import ExchangeHome from "./exchange/pages/ExchangeHome";
 import ExchangeRequest from "./exchange/pages/ExchangeRequest";
 import ExchangeHistory from "./exchange/pages/ExchangeHistory";
 import ExchangeStatus from "./exchange/pages/ExchangeStatus";
-import Sidebar from './components/Sidebar';
-import StatCard from './components/StatCard';
+
 import "./App.css";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/skills" element={<Skills />} />
+        <Route path="/search" element={<UserSearch />} />
         <Route path="/search" element={<Search />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/requests" element={<Requests />} />
