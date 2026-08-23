@@ -267,3 +267,46 @@
       transform: translateY(-4px);
     }
   }
+  .chat-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .chat-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .user-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .user-status.online {
+    color: #28a745;
+  }
+  
+  .user-status.online .status-dot {
+    background-color: #28a745;
+  }
+  
+  .user-status.offline {
+    color: #888;
+  }
+  
+  .user-status.offline .status-dot {
+    background-color: #aaa;
+  }

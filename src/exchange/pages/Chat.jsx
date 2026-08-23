@@ -47,16 +47,19 @@ function Chat() {
       id: 1,
       name: "Priya",
       skill: "Python Exchange",
+      online: true,
     },
     {
       id: 2,
       name: "Rahul",
       skill: "React Exchange",
+      online: false,
     },
     {
       id: 3,
       name: "Anjali",
       skill: "UI/UX Exchange",
+      online: true,
     },
   ];
   const currentMessages = messages[selectedUser.name] || [];
