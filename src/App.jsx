@@ -23,8 +23,7 @@ import ExchangeRequest from "./exchange/pages/ExchangeRequest";
 import ExchangeHistory from "./exchange/pages/ExchangeHistory";
 import ExchangeStatus from "./exchange/pages/ExchangeStatus";
 
-
-import "./App.css";
+import "./App.css";// Automatic trigger test
 
 function App() {
   return (
