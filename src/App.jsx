@@ -23,7 +23,7 @@ import ExchangeRequest from "./exchange/pages/ExchangeRequest";
 import ExchangeHistory from "./exchange/pages/ExchangeHistory";
 import ExchangeStatus from "./exchange/pages/ExchangeStatus";
 
-import "./App.css";// Automatic trigger test
+import "./App.css";// Jenkins automatic trigger test
 
 function App() {
   return (
