@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import Sidebar from '../components/Sidebar.jsx';
 import StatCard from '../components/StatCard.jsx';
 import './Dashboard.css';
 
+
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const statsData = [
     { id: 1, title: 'My Skills', value: '5 Active', change: '+2 this week', icon: '⚡' },
     { id: 2, title: 'Skill Requests', value: '3 Pending', change: '1 new today', icon: '📩' },
@@ -46,11 +50,15 @@ const Dashboard = () => {
         <div className="dashboard-content-grid">
           {/* Table / Recent Activity Section */}
           <div className="dash-section">
-            <div className="section-header">
-              <h3>Recent Skill Requests</h3>
-              <button className="btn-view-all">View All</button>
-            </div>
-            
+                  <div className="section-header">
+            <h3>Recent Skill Requests</h3>
+                 <button
+                    className="btn-view-all"
+                    onClick={() => navigate("/requests")}
+                 >
+                   View All
+                 </button>
+                  </div>
             <table className="requests-table">
               <thead>
                 <tr>
@@ -81,9 +89,20 @@ const Dashboard = () => {
           <div className="dash-section quick-actions">
             <h3>Quick Actions</h3>
             <p>What would you like to do today?</p>
-            <div className="action-buttons">
-              <button className="btn-primary">+ Add New Skill</button>
-              <button className="btn-secondary">🔍 Find Matches</button>
+             <div className="action-buttons">
+              <button
+                className="btn-primary"
+                 onClick={() => navigate("/skills")}
+                 >
+                    + Add New Skill
+                       </button>
+
+        <button
+           className="btn-secondary"
+             onClick={() => navigate("/search")}
+        >
+               🔍 Find Matches
+             </button>
             </div>
           </div>
         </div>

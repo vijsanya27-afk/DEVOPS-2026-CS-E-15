@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./Requests.css";
 
 function Requests() {
+  const [selectedRequest, setSelectedRequest] = useState(null);
+
   const [requests, setRequests] = useState([
     {
       id: 1,
@@ -42,15 +44,10 @@ function Requests() {
 
         <div className="request-actions">
 
-  <button
-    onClick={() =>
-      alert(
-        `Request Details\n\nName: ${request.name}\nSkill: ${request.skill}\nStatus: ${request.status}`
-      )
-    }
-  >
-    View Request
-  </button>
+        <button onClick={() => setSelectedRequest(request)}>
+            View Request
+                </button>
+
 
   {request.status === "Pending" && (
     <>
@@ -87,6 +84,41 @@ function Requests() {
 </div>
         </div>
       ))}
+       {selectedRequest && (
+  <div className="modal-overlay">
+    <div className="request-modal">
+
+      <button
+        className="close-modal"
+        onClick={() => setSelectedRequest(null)}
+      >
+        ×
+      </button>
+
+      <h2>Request Details</h2>
+
+      <p>
+        <strong>Name:</strong> {selectedRequest.name}
+      </p>
+
+      <p>
+        <strong>Skill:</strong> {selectedRequest.skill}
+      </p>
+
+      <p>
+        <strong>Status:</strong> {selectedRequest.status}
+      </p>
+
+      <button
+        className="modal-btn"
+        onClick={() => setSelectedRequest(null)}
+      >
+        Close
+      </button>
+
+    </div>
+  </div>
+)}
     </div>
   );
 }
