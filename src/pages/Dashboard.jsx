@@ -1,6 +1,6 @@
-import React from 'react';
 import Sidebar from '../components/Sidebar.jsx';
 import StatCard from '../components/StatCard.jsx';
+import MutualMatches from '../components/MutualMatches.jsx';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -11,7 +11,6 @@ const Dashboard = () => {
     { id: 4, title: 'Rating', value: '4.8 ⭐', change: 'Based on 25 reviews', icon: '🏆' },
   ];
 
-  // Khali space bharne ke liye Recent Requests ka dummy data
   const recentRequests = [
     { id: 1, name: 'Rahul Sharma', skill: 'React.js', lookingFor: 'Python', status: 'Pending' },
     { id: 2, name: 'Priya Verma', skill: 'UI/UX Design', lookingFor: 'Node.js', status: 'Accepted' },
@@ -23,7 +22,7 @@ const Dashboard = () => {
       <Sidebar />
 
       <main className="dashboard-main">
-        {/* Header - Left Aligned */}
+        {/* Header */}
         <header className="dashboard-header">
           <h1>Dashboard</h1>
           <p>Find people, share skills and learn together.</p>
@@ -42,9 +41,9 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* 2. Middle Section - Recent Requests & Quick Actions */}
+        {/* 2. Content Grid (Table + Quick Actions) */}
         <div className="dashboard-content-grid">
-          {/* Table / Recent Activity Section */}
+          {/* Recent Skill Requests */}
           <div className="dash-section">
             <div className="section-header">
               <h3>Recent Skill Requests</h3>
@@ -88,8 +87,13 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* 3. Mutual Matches Section (Full Width Bottom Section) */}
+        <div className="dash-section dashboard-full-width">
+          <MutualMatches />
+        </div>
       </main>
     </div>
+   
   );
 };
 

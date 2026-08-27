@@ -239,3 +239,156 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.dashboard-full-width {
+  margin-top: 24px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  color: #1a202c !important; /* Explicit text color */
+  opacity: 1 !important; /* Un-fade content */
+}
+/* Mutual Matches Styling */
+.matches-container {
+  padding: 20px;
+}
+
+.matches-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+  text-align: left;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.match-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.match-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.match-card-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge-match {
+  color: #166534;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #dcfce7;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.match-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.match-card p strong {
+  color: #1f2937;
+}
+
+/* Mutual Matches Container Fixes */
+.matches-container {
+  padding: 8px;
+}
+
+.matches-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #111827;
+  text-align: left; /* Header center se left shift kiya */
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Vertically stacked cards side-by-side aayenge */
+  gap: 16px;
+}
+
+.match-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  text-align: left;
+}
+
+.match-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.match-card-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge-match {
+  color: #166534;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #dcfce7;
+  padding: 4px 8px;
+  border-radius: 9999px;
+}
+
+.match-card p {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.match-card p strong {
+  color: #1f2937;
+}
+/* Recommended Users Styles */
+.user-bio {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 6px 0 10px 0;
+}
+
+.badge-rating {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b45309;
+  background-color: #fef3c7;
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.btn-connect {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
