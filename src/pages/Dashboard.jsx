@@ -1,8 +1,8 @@
-import React from 'react';
 import { useNavigate } from "react-router-dom";
 import Sidebar from '../components/Sidebar.jsx';
 import StatCard from '../components/StatCard.jsx';
 import MutualMatches from '../components/MutualMatches.jsx';
+import RecommendedUsers from '../components/RecommendedUsers.jsx';
 import './Dashboard.css';
 
 const Dashboard = () => {
@@ -110,6 +110,9 @@ const Dashboard = () => {
         <div className="dash-section dashboard-full-width">
           <MutualMatches />
         </div>
+        <div className="dash-section dashboard-full-width">
+  <RecommendedUsers />
+</div>
       </main>
     </div>
   );
