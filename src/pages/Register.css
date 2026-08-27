@@ -52,4 +52,24 @@
 
 .register button:hover {
   background: #4338ca;
+ } 
+ @media (max-width: 600px) {
+  .register {
+    padding: 20px;
+  }
+
+  .register form {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .register input,
+  .register button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .register h1 {
+    font-size: 28px;
+  }
 }

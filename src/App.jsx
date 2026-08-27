@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 
@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
 import Skills from "./pages/Skills";
 import Search from "./pages/Search";
@@ -21,7 +23,7 @@ import ExchangeRequest from "./exchange/pages/ExchangeRequest";
 import ExchangeHistory from "./exchange/pages/ExchangeHistory";
 import ExchangeStatus from "./exchange/pages/ExchangeStatus";
 
-import "./App.css";
+import "./App.css";// automatic trigger test final
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/skills" element={<Skills />} />
@@ -48,6 +52,8 @@ function App() {
         <Route path="/exchange/history" element={<ExchangeHistory />} />
         <Route path="/exchange/status" element={<ExchangeStatus />} />
         <Route path="/exchange/chat" element={<Chat />} />
+        
+        <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     </BrowserRouter>
   );

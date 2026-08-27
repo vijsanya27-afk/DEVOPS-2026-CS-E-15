@@ -62,3 +62,35 @@
     padding: 30px 20px;
   }
 }
+.forgot-link {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  margin-top: 12px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .login {
+    padding: 20px;
+  }
+
+  .login form {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .login input,
+  .login button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .login h1 {
+    font-size: 28px;
+  }
+}

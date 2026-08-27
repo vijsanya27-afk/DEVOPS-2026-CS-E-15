@@ -224,3 +224,89 @@
     border-radius: 6px;
     font-size: 13px;
   }
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 20px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .typing-dots span {
+    width: 6px;
+    height: 6px;
+    background-color: #666;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+  }
+  
+  .typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes typing {
+    0%,
+    60%,
+    100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+  
+    30% {
+      opacity: 1;
+      transform: translateY(-4px);
+    }
+  }
+  .chat-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  .chat-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .user-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .user-status.online {
+    color: #28a745;
+  }
+  
+  .user-status.online .status-dot {
+    background-color: #28a745;
+  }
+  
+  .user-status.offline {
+    color: #888;
+  }
+  
+  .user-status.offline .status-dot {
+    background-color: #aaa;
+  }

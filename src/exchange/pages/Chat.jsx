@@ -3,6 +3,7 @@ import ExchangeLayout from "../components/ExchangeLayout";
 import ChatContact from "../components/ChatContact";
 import "./Chat.css";
 import MessageComposer from "../components/MessageComposer";
+import TypingIndicator from "../components/TypingIndicator";
 
 function Chat() {
   const [message, setMessage] = useState("");
@@ -46,16 +47,19 @@ function Chat() {
       id: 1,
       name: "Priya",
       skill: "Python Exchange",
+      online: true,
     },
     {
       id: 2,
       name: "Rahul",
       skill: "React Exchange",
+      online: false,
     },
     {
       id: 3,
       name: "Anjali",
       skill: "UI/UX Exchange",
+      online: true,
     },
   ];
   const currentMessages = messages[selectedUser.name] || [];
@@ -141,6 +145,7 @@ function Chat() {
   </div>
   ))
   )}
+  <TypingIndicator user={selectedUser.name} />
   </div>
 
   <MessageComposer

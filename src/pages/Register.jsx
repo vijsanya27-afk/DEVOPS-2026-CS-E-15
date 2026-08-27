@@ -10,17 +10,31 @@ function Register() {
   const navigate = useNavigate();
 
   const handleRegister = (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    if (name === "" || email === "" || password === "") {
-      alert("Please fill all fields");
-      return;
-    }
+  
+  if (!name.trim() || !email.trim() || !password.trim()) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    alert("Registration successful!");
+  if (!email.includes("@") || !email.includes(".")) {
+    alert("Please enter a valid email");
+    return;
+  }
 
-    navigate("/login");
-  };
+ 
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
+    return;
+  }
+
+   localStorage.setItem("userEmail", email);
+   localStorage.setItem("userPassword", password);
+
+     alert("Registration successful!");
+     navigate("/login");
+};
 
   return (
     <div className="register">

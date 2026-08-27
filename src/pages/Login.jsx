@@ -31,9 +31,16 @@ function Login() {
     return;
   }
 
-  alert("Login successful!");
-  navigate("/dashboard");
-};
+       const savedEmail = localStorage.getItem("userEmail");
+      const savedPassword = localStorage.getItem("userPassword");
+
+        if (email === savedEmail && password === savedPassword) {
+          alert("Login successful!");
+          navigate("/dashboard");
+            } else {
+            alert("Invalid email or password!");
+        }
+     };
 
   return (
     <div className="login">
@@ -55,6 +62,14 @@ function Login() {
         />
 
         <button type="submit">Login</button>
+
+        <button
+       type="button"
+         className="forgot-link"
+      onClick={() => navigate("/forgot-password")}
+      >
+         Forgot Password?
+          </button>
       </form>
     </div>
   );
