@@ -15,7 +15,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 # -------------------------------------------------------------
 # CONFIGURATION: Institution & Department Details
 # -------------------------------------------------------------
-COLLEGE_NAME = "ENGINEERING COLLEGE / UNIVERSITY NAME"
+COLLEGE_NAME = "Swami Keshvanand Institute of Technology,Management & Gramothan, Jaipur"
 DEPARTMENT_NAME = "Department of Computer Science & Engineering"
 # -------------------------------------------------------------
 
@@ -176,39 +176,39 @@ def generate_pdf(interval="weekly"):
         pagesize=letter,
         rightMargin=36,
         leftMargin=36,
-        topMargin=32,
-        bottomMargin=32
+        topMargin=30,
+        bottomMargin=30
     )
 
     styles = getSampleStyleSheet()
     
     college_style = ParagraphStyle(
         'CollegeStyle', parent=styles['Heading1'],
-        fontSize=14, leading=17, textColor=colors.HexColor("#0F172A"), alignment=1, spaceAfter=2
+        fontSize=13.5, leading=17, textColor=colors.HexColor("#0F172A"), alignment=1, spaceAfter=2
     )
     dept_style = ParagraphStyle(
         'DeptStyle', parent=styles['Normal'],
-        fontSize=10, leading=13, textColor=colors.HexColor("#475569"), alignment=1, spaceAfter=8
+        fontSize=9.5, leading=13, textColor=colors.HexColor("#475569"), alignment=1, spaceAfter=6
     )
     title_style = ParagraphStyle(
         'TitleStyle', parent=styles['Heading2'],
-        fontSize=14, leading=18, textColor=colors.HexColor("#1A365D"), alignment=1, spaceAfter=6
+        fontSize=13, leading=17, textColor=colors.HexColor("#1A365D"), alignment=1, spaceAfter=5
     )
     repo_style = ParagraphStyle(
         'RepoStyle', parent=styles['Normal'],
-        fontSize=10, leading=14, textColor=colors.HexColor("#0F172A"), spaceAfter=3
+        fontSize=9.5, leading=14, textColor=colors.HexColor("#0F172A"), spaceAfter=3
     )
     meta_style = ParagraphStyle(
         'MetaStyle', parent=styles['Normal'],
-        fontSize=8.5, textColor=colors.HexColor("#64748B"), spaceAfter=10
+        fontSize=8.5, textColor=colors.HexColor("#64748B"), spaceAfter=8
     )
     section_style = ParagraphStyle(
         'SectionStyle', parent=styles['Heading2'],
-        fontSize=11, leading=15, textColor=colors.HexColor("#0F172A"), spaceBefore=8, spaceAfter=5
+        fontSize=10.5, leading=14, textColor=colors.HexColor("#0F172A"), spaceBefore=7, spaceAfter=4
     )
     sub_section_style = ParagraphStyle(
         'SubSectionStyle', parent=styles['Heading3'],
-        fontSize=9.5, leading=13, textColor=colors.HexColor("#2563EB"), spaceBefore=6, spaceAfter=3
+        fontSize=9, leading=12, textColor=colors.HexColor("#2563EB"), spaceBefore=5, spaceAfter=2
     )
     msg_style = ParagraphStyle(
         'MsgStyle', parent=styles['Normal'],
@@ -218,14 +218,13 @@ def generate_pdf(interval="weekly"):
         'MetaCellStyle', parent=styles['Normal'],
         fontSize=8, leading=10, textColor=colors.HexColor("#475569"), alignment=1
     )
-    
-    sig_left_style = ParagraphStyle(
-        'SigLeftStyle', parent=styles['Normal'],
-        fontSize=9.5, leading=15, textColor=colors.HexColor("#0F172A"), alignment=0
+    marks_style = ParagraphStyle(
+        'MarksStyle', parent=styles['Normal'],
+        fontSize=9, leading=12, textColor=colors.HexColor("#0F172A"), alignment=1
     )
-    sig_right_style = ParagraphStyle(
-        'SigRightStyle', parent=styles['Normal'],
-        fontSize=9.5, leading=15, textColor=colors.HexColor("#0F172A"), alignment=2
+    sig_block_style = ParagraphStyle(
+        'SigBlockStyle', parent=styles['Normal'],
+        fontSize=9, leading=15, textColor=colors.HexColor("#0F172A"), alignment=0
     )
 
     story = []
@@ -234,7 +233,7 @@ def generate_pdf(interval="weekly"):
     story.append(Paragraph(f"<b>{html.escape(COLLEGE_NAME)}</b>", college_style))
     story.append(Paragraph(f"<b>{html.escape(DEPARTMENT_NAME)}</b>", dept_style))
     story.append(Paragraph(f"<u><b>{report_title}</b></u>", title_style))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
     # 2. Metadata (Repo, Branch, Scope, Date)
     story.append(Paragraph(f"<b>Project Repository:</b> <font color='#2563EB'><b>{html.escape(repo_name)}</b></font> &nbsp;|&nbsp; <b>Branch:</b> <code>{html.escape(branch_name)}</code>", repo_style))
@@ -267,23 +266,23 @@ def generate_pdf(interval="weekly"):
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('ALIGN', (0, 1), (0, -1), 'LEFT'),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, -1), 8.5),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
-        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('FONTSIZE', (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5),
+        ('TOPPADDING', (0, 0), (-1, -1), 3.5),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#CBD5E1")),
         ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor("#F8FAFC")]),
     ]))
     story.append(table)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
     # 4. Visual Charts
     story.append(Paragraph("2. Visual Trends & Volume", section_style))
     chart_image = create_charts(students, timeline_activity, interval)
     story.append(chart_image)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
 
-    # 5. Detailed Commit Logs per Student
-    story.append(Paragraph(f"3. Detailed Commit Logs by Student ({interval.capitalize()})", section_style))
+    # 5. Detailed Commit Logs per Student WITH Vertically Merged Mentor Marks
+    story.append(Paragraph(f"3. Detailed Commit Logs & Mentor Evaluation ({interval.capitalize()})", section_style))
     if not student_logs:
         story.append(Paragraph("<i>No commit logs found for this timeframe.</i>", styles['Normal']))
     else:
@@ -291,54 +290,74 @@ def generate_pdf(interval="weekly"):
             student_section = []
             student_section.append(Paragraph(f"<b>Student:</b> {html.escape(student_name)} — <i>{len(logs)} commit(s)</i>", sub_section_style))
             
-            log_table_data = [["Date", "Hash", "Commit Message"]]
-            for date_val, sha_val, msg_val in logs:
+            log_table_data = [["Date", "Hash", "Commit Message", "Mentor Marks (/10)"]]
+            
+            # Place the clean marking line in the first row
+            first_date, first_sha, first_msg = logs[0]
+            safe_msg = html.escape(first_msg) if first_msg else "(No commit message)"
+            log_table_data.append([
+                Paragraph(first_date, meta_cell_style),
+                Paragraph(f"<code>{first_sha}</code>", meta_cell_style),
+                Paragraph(safe_msg, msg_style),
+                Paragraph("<b>_____ / 10</b>", marks_style)
+            ])
+            
+            # Subsequent commit rows have blank placeholder for merged cell
+            for date_val, sha_val, msg_val in logs[1:]:
                 safe_msg = html.escape(msg_val) if msg_val else "(No commit message)"
                 log_table_data.append([
                     Paragraph(date_val, meta_cell_style),
                     Paragraph(f"<code>{sha_val}</code>", meta_cell_style),
-                    Paragraph(safe_msg, msg_style)
+                    Paragraph(safe_msg, msg_style),
+                    ""
                 ])
             
-            log_table = Table(log_table_data, colWidths=[75, 55, 410])
-            log_table.setStyle(TableStyle([
+            num_rows = len(log_table_data)
+            log_table = Table(log_table_data, colWidths=[65, 50, 335, 90])
+            
+            t_style = [
                 ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#475569")),
                 ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
                 ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+                ('ALIGN', (3, 0), (3, -1), 'CENTER'),
                 ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-                ('FONTSIZE', (0, 0), (-1, -1), 8),
-                ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
-                ('TOPPADDING', (0, 0), (-1, -1), 3),
-                ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#E2E8F0")),
-                ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor("#F8FAFC")]),
-            ]))
+                ('FONTSIZE', (0, 0), (-1, -1), 7.5),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
+                ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+                ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#CBD5E1")),
+                ('ROWBACKGROUNDS', (0, 1), (2, -1), [colors.white, colors.HexColor("#F8FAFC")]),
+                ('SPAN', (3, 1), (3, num_rows - 1)),              # Vertically merge mentor marks column
+                ('VALIGN', (3, 1), (3, num_rows - 1), 'MIDDLE'),     # Vertically center the marks line
+                ('BACKGROUND', (3, 1), (3, num_rows - 1), colors.HexColor("#FEF3C7")), # Accent for marks area
+            ]
+            
+            log_table.setStyle(TableStyle(t_style))
             student_section.append(log_table)
-            student_section.append(Spacer(1, 8))
+            student_section.append(Spacer(1, 5))
             story.append(KeepTogether(student_section))
 
-    # 6. Mentor & Coordinator Signatures with Blank Fillable Lines
-    story.append(Spacer(1, 25))
+    # 6. Symmetrical Signatures
+    story.append(Spacer(1, 16))
     
     mentor_cell = [
-        Paragraph("<b>Name:</b> ___________________________", sig_left_style),
-        Spacer(1, 4),
-        Paragraph("<b>Designation:</b> Project Mentor", sig_left_style),
-        Spacer(1, 8),
-        Paragraph("<b>Signature:</b> ________________________", sig_left_style),
+        Paragraph("<b>Name:</b> ___________________________", sig_block_style),
+        Paragraph("<b>Designation:</b> Project Mentor", sig_block_style),
+        Spacer(1, 6),
+        Paragraph("<b>Signature:</b> ________________________", sig_block_style),
     ]
     
     coordinator_cell = [
-        Paragraph("<b>Name:</b> ___________________________", sig_right_style),
-        Spacer(1, 4),
-        Paragraph("<b>Designation:</b> Lab Coordinator", sig_right_style),
-        Spacer(1, 8),
-        Paragraph("<b>Signature:</b> ________________________", sig_right_style),
+        Paragraph("<b>Name:</b> ___________________________", sig_block_style),
+        Paragraph("<b>Designation:</b> Lab Coordinator", sig_block_style),
+        Spacer(1, 6),
+        Paragraph("<b>Signature:</b> ________________________", sig_block_style),
     ]
 
     sig_table = Table([[mentor_cell, coordinator_cell]], colWidths=[270, 270])
     sig_table.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('LEFTPADDING', (0, 0), (-1, -1), 0),
+        ('LEFTPADDING', (0, 0), (0, -1), 0),
+        ('LEFTPADDING', (1, 0), (1, -1), 40),
         ('RIGHTPADDING', (0, 0), (-1, -1), 0),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
         ('TOPPADDING', (0, 0), (-1, -1), 0),
