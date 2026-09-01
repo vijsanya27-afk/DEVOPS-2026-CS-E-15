@@ -1,0 +1,97 @@
+.upcoming-page {
+    min-height: calc(100vh - 80px);
+    padding: 40px 20px;
+    background: #f8fafc;
+  }
+  
+  .upcoming-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .upcoming-container h1 {
+    margin-bottom: 8px;
+    color: #111827;
+  }
+  
+  .upcoming-subtitle {
+    margin-bottom: 30px;
+    color: #6b7280;
+  }
+  
+  .sessions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .session-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #0000000d;
+  }
+  
+  .session-info h2 {
+    margin: 0 0 12px;
+    color: #4f46e5;
+  }
+  
+  .session-info p {
+    margin: 6px 0;
+    color: #374151;
+  }
+  
+  .session-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+  
+  .session-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .confirmed {
+    color: #166534;
+    background: #dcfce7;
+  }
+  
+  .pending {
+    color: #92400e;
+    background: #fef3c7;
+  }
+  
+  .session-actions button {
+    padding: 9px 16px;
+    border: none;
+    border-radius: 7px;
+    background: #4f46e5;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .session-actions button:hover {
+    background: #4338ca;
+  }
+  
+  @media (max-width: 600px) {
+    .session-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .session-actions {
+      align-items: flex-start;
+    }
+  }

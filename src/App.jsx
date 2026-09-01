@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
 import Navbar from "./components/Navbar";
-
 import UserSearch from './components/UserSearch';
 import SkillsOffered from "./components/SkillsOffered.jsx";
 import SkillsWanted from './components/SkillsWanted';
@@ -24,7 +22,8 @@ import ExchangeHistory from "./exchange/pages/ExchangeHistory";
 import ExchangeStatus from "./exchange/pages/ExchangeStatus";
 
 import "./App.css";// automatic trigger test final
-
+import SessionScheduling from "./pages/SessionScheduling.jsx";
+import UpcomingSessions from "./pages/UpcomingSessions.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -54,6 +53,11 @@ function App() {
         <Route path="/exchange/chat" element={<Chat />} />
         
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/session-scheduling" element={<SessionScheduling />} />
+        <Route
+  path="/upcoming-sessions"
+  element={<UpcomingSessions />}
+/>
         </Routes>
     </BrowserRouter>
   );
