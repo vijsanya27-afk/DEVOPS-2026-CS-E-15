@@ -48,6 +48,7 @@ function Navbar() {
 
       <div className="navbar-links">
         <Link to="/">Home</Link>
+        <Link to="/reviews">Reviews</Link>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
 
