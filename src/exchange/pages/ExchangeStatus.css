@@ -80,3 +80,22 @@
       padding: 20px;
     }
   }
+
+.status-card-pending {
+  border-left: 5px solid #ffc107;
+}
+
+.status-card-accepted {
+  border-left: 5px solid #28a745;
+}
+
+.status-card-rejected {
+  border-left: 5px solid #dc3545;
+}
+
+.status-message {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px !important;
+  color: #555 !important;
+}

@@ -23,6 +23,22 @@ function ExchangeStatus() {
     },
   ];
 
+  const getStatusMessage = (status) => {
+    if (status === "Pending") {
+      return "Waiting for response";
+    }
+
+    if (status === "Accepted") {
+      return "Request accepted";
+    }
+
+    if (status === "Rejected") {
+      return "Request rejected";
+    }
+
+    return "Status unavailable";
+  };
+
   return (
     <ExchangeLayout>
       <div className="exchange-status">
@@ -34,7 +50,10 @@ function ExchangeStatus() {
 
         <div className="status-container">
           {requests.map((request) => (
-            <div className="status-card" key={request.id}>
+            <div
+              className={`status-card status-card-${request.status.toLowerCase()}`}
+              key={request.id}
+            >
               <h2>{request.skill}</h2>
 
               <p>
@@ -42,12 +61,17 @@ function ExchangeStatus() {
               </p>
 
               <p>
-                <strong>Status:</strong>
+                <strong>Status:</strong>{" "}
                 <span
                   className={`status ${request.status.toLowerCase()}`}
+                  aria-label={`Request status: ${request.status}`}
                 >
                   {request.status}
                 </span>
+              </p>
+
+              <p className="status-message">
+                {getStatusMessage(request.status)}
               </p>
             </div>
           ))}
