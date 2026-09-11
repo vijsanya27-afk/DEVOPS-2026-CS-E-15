@@ -6,7 +6,9 @@ import MessageComposer from "../components/MessageComposer";
 import TypingIndicator from "../components/TypingIndicator";
 
 function Chat() {
+  
   const [message, setMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState({
     Priya: [
       {
@@ -62,6 +64,14 @@ function Chat() {
       online: true,
     },
   ];
+  const handleUserSelect = (user) => {
+    setIsLoading(true);
+    setSelectedUser(user);
+  
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  };
   const currentMessages = messages[selectedUser.name] || [];
   const hasMessages = currentMessages.length > 0;
   const handleSend = (e, selectedFile = null) => {
@@ -111,7 +121,7 @@ function Chat() {
                 key={user.id}
                 user={user}
                 selected={selectedUser.name === user.name}
-                onSelect={setSelectedUser}
+                onSelect={handleUserSelect}
               />
             ))}
           </div>
@@ -122,9 +132,12 @@ function Chat() {
               <h3>{selectedUser.name}</h3>
               <span>{selectedUser.skill}</span>
             </div>
-
             <div className="messages">
-              {!hasMessages ? (
+            {isLoading ? (
+            <p className="loading-chat" aria-live="polite">
+            Loading conversation...
+            </p>
+            ) : !hasMessages ? (
                 <p className="empty-chat">
                   No messages yet. Start a conversation.
                 </p>

@@ -310,3 +310,32 @@
   .user-status.offline .status-dot {
     background-color: #aaa;
   }
+  /* chat polish */
+.loading-chat {
+  text-align: center;
+  color: #666;
+  margin-top: 100px;
+  font-size: 15px;
+}
+
+.chat-container {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.chat-user {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.chat-user:hover {
+  transform: translateY(-1px);
+}
+
+.message {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.empty-chat,
+.loading-chat {
+  line-height: 1.6;
+}
