@@ -73,3 +73,49 @@
     font-size: 28px;
   }
 }
+
+
+.register form {
+  gap: 12px;
+}
+
+.register input,
+.register select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.register input:focus,
+.register select:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.register button {
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.register button:hover {
+  transform: translateY(-1px);
+}
+.register input,
+.register select {
+  background: #fff !important;
+  color: #111827 !important;
+}
+
+.register input::placeholder {
+  color: #6b7280;
+}

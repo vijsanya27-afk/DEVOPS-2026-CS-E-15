@@ -4,49 +4,78 @@ import "./ForgotPassword.css";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const navigate = useNavigate();
 
   const handleForgotPassword = (event) => {
     event.preventDefault();
 
-    if (!email.trim()) {
-      alert("Please enter your email");
+    setError("");
+    setSuccess("");
+
+    const enteredEmail = email.trim();
+    const registeredEmail = localStorage.getItem("userEmail");
+
+    if (!enteredEmail) {
+      setError("Please enter your email.");
       return;
     }
 
-    if (!email.includes("@") || !email.includes(".")) {
-      alert("Please enter a valid email");
+    if (!enteredEmail.includes("@") || !enteredEmail.includes(".")) {
+      setError("Please enter a valid email.");
       return;
     }
 
-    alert("Password reset link sent to your email!");
+    if (!registeredEmail || registeredEmail !== enteredEmail) {
+      setError("Email not found. Please register first.");
+      return;
+    }
 
-    navigate("/reset-password", {
-      state: { email: email }
-    });
+    setSuccess("Email verified. Redirecting to password reset...");
+
+    setTimeout(() => {
+      navigate("/reset-password", {
+        state: { email: enteredEmail }
+      });
+    }, 800);
   };
 
   return (
-    <div className="forgot-password">
+    <main className="forgot-password">
       <h1>Forgot Password?</h1>
 
       <div className="forgot-card">
-        <p>Enter your email to reset your password.</p>
+        <p>Enter your registered email to reset your password.</p>
 
         <form onSubmit={handleForgotPassword}>
           <input
             type="email"
             placeholder="Enter your email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => {
+              setEmail(event.target.value);
+              setError("");
+              setSuccess("");
+            }}
           />
 
-          <button type="submit">
-            Send Reset Link
-          </button>
+          {error && <p className="form-error">{error}</p>}
+          {success && <p className="form-success">{success}</p>}
+
+          <button type="submit">Continue</button>
         </form>
+
+        <button
+          type="button"
+          className="back-login"
+          onClick={() => navigate("/login")}
+        >
+          Back to Login
+        </button>
       </div>
-    </div>
+    </main>
   );
 }
 

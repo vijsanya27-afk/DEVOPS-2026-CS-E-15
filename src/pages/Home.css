@@ -1,91 +1,109 @@
 .home {
   min-height: calc(100vh - 80px);
-  padding: 60px 20px;
+  padding: 50px 20px;
   text-align: center;
   background: #f5f7fb;
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
-  max-width: 900px;
-  margin: 0 auto 60px;
-  padding: 50px 30px;
+  max-width: 950px;
+  margin: 0 auto 55px;
+  padding: 55px 30px;
 }
 
 .hero h1 {
+  margin-bottom: 18px;
   font-size: 48px;
-  margin-bottom: 20px;
-  color: #222;
+  line-height: 1.15;
+  color: #111827;
 }
 
 .hero p {
-  font-size: 20px;
-  color: #666;
-  margin-bottom: 30px;
+  max-width: 650px;
+  margin: 0 auto 28px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #6b7280;
 }
 
 .hero button {
-  padding: 12px 28px;
-  border: none;
-  border-radius: 6px;
+  padding: 13px 30px;
+  border: 0;
+  border-radius: 8px;
   background: #4f46e5;
-  color: white;
+  color: #fff;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .hero button:hover {
   background: #4338ca;
+  transform: translateY(-2px);
 }
 
-/* Feature Sections */
+/* Features */
 .features {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 24px;
 }
 
 .feature {
-  background: white;
   padding: 30px 25px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px #0000000d;
+  transition: 0.2s;
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px #00000014;
 }
 
 .feature h2 {
-  color: #222;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  color: #111827;
+  font-size: 21px;
 }
 
 .feature p {
-  color: #666;
+  margin: 0;
+  color: #6b7280;
   line-height: 1.6;
 }
 
-/* Responsive Design */
+/* Tablet */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 36px;
+  .hero {
+    padding: 40px 20px;
   }
 
-  .hero p {
-    font-size: 18px;
+  .hero h1 {
+    font-size: 38px;
   }
 
   .features {
     grid-template-columns: 1fr;
+    max-width: 600px;
   }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
   .home {
-    padding: 40px 15px;
+    padding: 35px 15px;
   }
 
   .hero {
-    padding: 30px 15px;
+    padding: 30px 10px;
+    margin-bottom: 35px;
   }
 
   .hero h1 {
@@ -94,5 +112,14 @@
 
   .hero p {
     font-size: 16px;
+  }
+
+  .hero button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .feature {
+    padding: 25px 20px;
   }
 }
