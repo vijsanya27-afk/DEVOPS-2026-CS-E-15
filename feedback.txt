@@ -1,0 +1,20 @@
+========================================
+       JENKINS AUTOMATED TEST
+========================================
+
+Files Changed in Latest Commit:
+----------------------------------------
+PASS - MODIFIED - src/components/Navbar.css
+PASS - MODIFIED - src/components/Navbar.jsx
+
+========================================
+             TEST SUMMARY
+========================================
+Total Files Checked : 2
+Created Files       : 0
+Modified Files      : 2
+Passed              : 2
+Failed              : 0
+----------------------------------------
+Overall Result      : PASSED
+========================================
