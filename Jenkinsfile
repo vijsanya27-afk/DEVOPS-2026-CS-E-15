@@ -26,17 +26,16 @@ pipeline {
             }
         }
           stage('Test') {
-             steps {
-              script {
-                 try {
-                 bat 'npm test'
-                env.TEST_STATUS = 'PASSED'
-               } catch (err) {
-                env.TEST_STATUS = 'FAILED'
-                throw err
-             }
-         }
-     }
+    steps {
+        bat '''
+        echo ============================== >> feedback.txt
+        echo Test Run: %BUILD_NUMBER% >> feedback.txt
+        echo Date: %DATE% %TIME% >> feedback.txt
+        echo ============================== >> feedback.txt
+        npm test >> feedback.txt 2>&1
+        echo. >> feedback.txt
+        '''
+    }
 }
         
 

@@ -4,16 +4,46 @@
 
 Files Changed in Latest Commit:
 ----------------------------------------
-PASS - MODIFIED - src/components/Navbar.css
-PASS - MODIFIED - src/components/Navbar.jsx
+PASS - MODIFIED - src/pages/ForgotPassword.css
+PASS - MODIFIED - src/pages/ForgotPassword.jsx
+PASS - MODIFIED - src/pages/Home.css
+PASS - MODIFIED - src/pages/Login.css
+PASS - MODIFIED - src/pages/Register.css
+PASS - MODIFIED - src/pages/ResetPassword.css
+PASS - MODIFIED - src/pages/ResetPassword.jsx
 
 ========================================
              TEST SUMMARY
 ========================================
-Total Files Checked : 2
+Total Files Checked : 7
 Created Files       : 0
-Modified Files      : 2
-Passed              : 2
+Modified Files      : 7
+Passed              : 7
+Failed              : 0
+----------------------------------------
+Overall Result      : PASSED
+========================================
+========================================
+       JENKINS AUTOMATED TEST
+========================================
+
+Files Changed in Latest Commit:
+----------------------------------------
+PASS - MODIFIED - src/pages/ForgotPassword.css
+PASS - MODIFIED - src/pages/ForgotPassword.jsx
+PASS - MODIFIED - src/pages/Home.css
+PASS - MODIFIED - src/pages/Login.css
+PASS - MODIFIED - src/pages/Register.css
+PASS - MODIFIED - src/pages/ResetPassword.css
+PASS - MODIFIED - src/pages/ResetPassword.jsx
+
+========================================
+             TEST SUMMARY
+========================================
+Total Files Checked : 7
+Created Files       : 0
+Modified Files      : 7
+Passed              : 7
 Failed              : 0
 ----------------------------------------
 Overall Result      : PASSED

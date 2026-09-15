@@ -101,11 +101,11 @@ if (failed === 0) {
 
 output.push("========================================");
 
-// Show result in terminal
+
 console.log(output.join("\n"));
 
-// Automatically create/update feedback.txt
-fs.writeFileSync("feedback.txt", output.join("\n") + "\n", "utf8");
+
+fs.appendFileSync("feedback.txt", output.join("\n") + "\n", "utf8");
 
 console.log("\nFeedback file updated: feedback.txt");
 
