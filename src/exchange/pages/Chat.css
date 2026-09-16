@@ -339,3 +339,71 @@
 .loading-chat {
   line-height: 1.6;
 }
+/* Mobile responsive test */
+@media (max-width: 480px) {
+  .chat-page {
+    padding: 20px 12px;
+  }
+
+  .chat-header h1 {
+    font-size: 26px;
+  }
+
+  .chat-header p {
+    font-size: 14px;
+  }
+
+  .chat-users {
+    padding: 15px;
+  }
+
+  .chat-user {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .user-status {
+    font-size: 11px;
+  }
+
+  .chat-box-header {
+    padding: 15px;
+  }
+
+  .messages {
+    padding: 15px;
+  }
+
+  .message {
+    max-width: 85%;
+  }
+
+  .message-form {
+    flex-direction: row;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .message-form input {
+    min-width: 0;
+    padding: 10px;
+  }
+
+  .message-form button {
+    padding: 10px 12px;
+  }
+
+  .emoji-toggle,
+  .file-button {
+    padding: 0 5px;
+  }
+
+  .emoji-picker {
+    width: 200px;
+    max-width: calc(100vw - 40px);
+  }
+
+  .selected-file {
+    font-size: 12px;
+  }
+}

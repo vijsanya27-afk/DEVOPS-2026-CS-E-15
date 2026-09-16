@@ -47,3 +47,44 @@
   .exchange-card button:hover {
     background: #3730a3;
   }
+  
+  @media (max-width: 768px) {
+    .exchange-home {
+      padding: 25px 15px;
+    }
+  
+    .exchange-home h1 {
+      font-size: 28px;
+    }
+  
+    .exchange-home > p {
+      font-size: 15px;
+    }
+  
+    .exchange-card {
+      padding: 22px 18px;
+    }
+  
+    .exchange-card h2 {
+      font-size: 22px;
+    }
+  
+    .exchange-card button {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .exchange-home {
+      padding: 20px 12px;
+    }
+  
+    .exchange-home h1 {
+      font-size: 25px;
+    }
+  
+    .exchange-card {
+      padding: 20px 15px;
+    }
+  }

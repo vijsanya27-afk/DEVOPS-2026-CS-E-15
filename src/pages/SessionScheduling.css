@@ -93,4 +93,29 @@
       grid-template-columns: 1fr;
       gap: 0;
     }
+    .session-page {
+      padding: 25px 12px;
+    }
+  
+    .session-card {
+      padding: 22px 16px;
+      border-radius: 10px;
+    }
+  
+    .session-card h1 {
+      font-size: 26px;
+    }
+  
+    .session-subtitle {
+      font-size: 14px;
+    }
+  
+    .form-group input,
+    .form-group textarea {
+      font-size: 14px;
+    }
+  
+    .schedule-button {
+      font-size: 15px;
+    }
   }
