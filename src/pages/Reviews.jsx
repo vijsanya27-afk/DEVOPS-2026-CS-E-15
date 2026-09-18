@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import ReviewsAndCalendar from "../components/ReviewsAndCalendar";
 import TopMentors from "../components/TopMentors";
 import "./Reviews.css";
+
+const REVIEWS_DATA = [
+  { id: 1, name: "Priya", rating: "⭐⭐⭐⭐⭐", text: "Very good teacher. Explained Python concepts clearly." },
+  { id: 2, name: "Aman", rating: "⭐⭐⭐⭐", text: "Great skill exchange experience." },
+  { id: 3, name: "Rahul", rating: "⭐⭐⭐⭐⭐", text: "Helpful and friendly person." }
+];
 
 function Reviews() {
   const [activeTab, setActiveTab] = useState("reviews");
@@ -16,8 +21,14 @@ function Reviews() {
         </h1>
 
         {/* Tab Toggle Switcher */}
-        <div style={{ background: "#e2e8f0", padding: "4px", borderRadius: "10px", display: "inline-flex", gap: "4px" }}>
+        <div 
+          role="tablist"
+          aria-label="Reviews and Mentors tabs"
+          style={{ background: "#e2e8f0", padding: "4px", borderRadius: "10px", display: "inline-flex", gap: "4px" }}
+        >
           <button
+            role="tab"
+            aria-selected={activeTab === "reviews"}
             onClick={() => setActiveTab("reviews")}
             style={{
               padding: "8px 18px",
@@ -35,6 +46,8 @@ function Reviews() {
             Reviews & Calendar
           </button>
           <button
+            role="tab"
+            aria-selected={activeTab === "mentors"}
             onClick={() => setActiveTab("mentors")}
             style={{
               padding: "8px 18px",
@@ -56,30 +69,16 @@ function Reviews() {
 
       {/* Dynamic Tab Content */}
       {activeTab === "reviews" ? (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px", alignItems: "start" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "20px", alignItems: "start" }}>
           <div>
-            <ReviewsAndCalendar />
-          </div>
-
-          <div>
-            <h3 style={{ marginTop: "0", marginBottom: "10px" }}>Previous Reviews</h3>
-            <div className="review-card">
-              <h3>Priya</h3>
-              <p>⭐⭐⭐⭐⭐</p>
-              <p>Very good teacher. Explained Python concepts clearly.</p>
-            </div>
-
-            <div className="review-card">
-              <h3>Aman</h3>
-              <p>⭐⭐⭐⭐</p>
-              <p>Great skill exchange experience.</p>
-            </div>
-
-            <div className="review-card">
-              <h3>Rahul</h3>
-              <p>⭐⭐⭐⭐⭐</p>
-              <p>Helpful and friendly person.</p>
-            </div>
+            <h3 style={{ marginTop: "0", marginBottom: "16px", color: "#0f172a" }}>Previous Reviews</h3>
+            {REVIEWS_DATA.map((review) => (
+              <div key={review.id} className="review-card">
+                <h3 style={{ margin: "0 0 6px 0", fontSize: "16px" }}>{review.name}</h3>
+                <p style={{ margin: "0 0 8px 0", fontSize: "14px" }}>{review.rating}</p>
+                <p style={{ margin: 0, fontSize: "14px", color: "#475569" }}>{review.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       ) : (

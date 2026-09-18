@@ -8,7 +8,7 @@ const trendingSkillsList = [
 ];
 
 const TrendingAndRating = () => {
-  // Rating State (Day 17 UI)
+  // Rating State
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [reviewText, setReviewText] = useState('');
@@ -19,6 +19,12 @@ const TrendingAndRating = () => {
     if (rating > 0) {
       setSubmitted(true);
     }
+  };
+
+  const handleResetRating = () => {
+    setRating(0);
+    setReviewText('');
+    setSubmitted(false);
   };
 
   return (
@@ -34,7 +40,7 @@ const TrendingAndRating = () => {
                 <h4 style={{ margin: 0, fontSize: '14px', color: '#1e293b' }}>{skill.title}</h4>
                 <span style={{ fontSize: '11px', color: '#64748b' }}>{skill.category} • {skill.count}</span>
               </div>
-             <span style={{ 
+              <span style={{ 
                 fontSize: '11px', 
                 backgroundColor: '#f1f5f9', 
                 color: '#475569', 
@@ -45,7 +51,6 @@ const TrendingAndRating = () => {
                 {skill.tag}
               </span>
             </div>
-            
           ))}
         </div>
       </div>
@@ -56,8 +61,24 @@ const TrendingAndRating = () => {
         <p style={{ margin: '0 0 16px 0', fontSize: '12px', color: '#64748b' }}>Leave feedback for your recent skill swap session.</p>
 
         {submitted ? (
-          <div style={{ padding: '16px', backgroundColor: '#f0fdf4', color: '#15803d', borderRadius: '10px', fontSize: '13px', fontWeight: '600' }}>
-            🎉 Thank you for rating! Your review has been submitted.
+          <div style={{ padding: '16px', backgroundColor: '#f0fdf4', color: '#15803d', borderRadius: '10px', fontSize: '13px', fontWeight: '600', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+            <div>🎉 Thank you for rating! Your review has been submitted.</div>
+            <button
+              type="button"
+              onClick={handleResetRating}
+              style={{
+                alignSelf: 'flex-start',
+                background: 'none',
+                border: 'none',
+                color: '#16a34a',
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                fontSize: '12px',
+                padding: 0
+              }}
+            >
+              Submit another review
+            </button>
           </div>
         ) : (
           <form onSubmit={handleSubmitRating}>
@@ -75,8 +96,10 @@ const TrendingAndRating = () => {
                     border: 'none',
                     fontSize: '24px',
                     cursor: 'pointer',
-                    color: star <= (hover || rating) ? '#f59e0b' : '#cbd5e1'
+                    color: star <= (hover || rating) ? '#f59e0b' : '#cbd5e1',
+                    padding: 0
                   }}
+                  aria-label={`Rate ${star} star`}
                 >
                   ★
                 </button>

@@ -45,7 +45,7 @@ const Skills = () => {
       boxSizing: 'border-box'
     }}>
       
-      {/* Target internal classes directly & expand them */}
+      {/* Scope container widths */}
       <style>{`
         .so-card-container,
         .sw-card-container,
@@ -71,15 +71,21 @@ const Skills = () => {
       </h1>
 
       {/* Buttons Row */}
-      <div style={{ 
-        display: 'flex', 
-        gap: '16px', 
-        justifyContent: 'center', 
-        marginBottom: '20px', 
-        flexWrap: 'wrap' 
-      }}>
+      <div 
+        role="tablist"
+        aria-label="Skills Dashboard Tabs"
+        style={{ 
+          display: 'flex', 
+          gap: '16px', 
+          justifyContent: 'center', 
+          marginBottom: '20px', 
+          flexWrap: 'wrap' 
+        }}
+      >
         <button 
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'offered'}
           style={activeTab === 'offered' ? activeStyle : inactiveStyle}
           onClick={() => setActiveTab('offered')}
         >
@@ -88,6 +94,8 @@ const Skills = () => {
 
         <button 
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'wanted'}
           style={activeTab === 'wanted' ? activeStyle : inactiveStyle}
           onClick={() => setActiveTab('wanted')}
         >
@@ -96,6 +104,8 @@ const Skills = () => {
 
         <button 
           type="button"
+          role="tab"
+          aria-selected={activeTab === 'metadata'}
           style={activeTab === 'metadata' ? activeStyle : inactiveStyle}
           onClick={() => setActiveTab('metadata')}
         >

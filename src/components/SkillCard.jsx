@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SkillCard = ({ name, skill, onRemove, onDelete, onUpdate, variant = 'offered' }) => {
   const [isEditing, setIsEditing] = useState(false);
   const displayName = name || (typeof skill === 'object' ? skill?.name : skill) || '';
   const [editedText, setEditedText] = useState(displayName);
+
+  
+  useEffect(() => {
+    setEditedText(displayName);
+  }, [displayName]);
 
   const handleSave = () => {
     if (editedText.trim() && onUpdate) {

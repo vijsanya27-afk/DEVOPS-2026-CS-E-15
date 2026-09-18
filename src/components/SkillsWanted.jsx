@@ -36,8 +36,12 @@ const SkillsWanted = () => {
     setError('');
   };
 
+  const handleUpdateSkill = (oldName, newName) => {
+    if (!newName.trim()) return;
+    setWantedSkills(wantedSkills.map((s) => (s === oldName ? newName.trim() : s)));
+  };
+
   return (
-    /* Center alignment ke liye outer wrapper */
     <div className="sw-page-wrapper">
       <div className="sw-card-container">
         <div className="sw-header">
@@ -52,7 +56,10 @@ const SkillsWanted = () => {
             className="sw-input"
             placeholder="e.g. Python, Figma, Docker"
             value={inputSkill}
-            onChange={(e) => setInputSkill(e.target.value)}
+            onChange={(e) => {
+              setInputSkill(e.target.value);
+              setError('');
+            }}
           />
           <button type="submit" className="sw-add-btn">Add Skill</button>
         </form>
@@ -63,11 +70,12 @@ const SkillsWanted = () => {
           {wantedSkills.length === 0 ? (
             <p className="sw-empty-msg">No skills added yet.</p>
           ) : (
-            wantedSkills.map((skill, index) => (
+            wantedSkills.map((skill) => (
               <SkillCard
-                key={index}
+                key={skill}
                 name={skill}
                 onRemove={handleRemoveSkill}
+                onUpdate={handleUpdateSkill}
                 variant="wanted"
               />
             ))

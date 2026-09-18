@@ -107,17 +107,20 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* 3. Mutual Matches Section (Full Width Bottom Section) */}
+        {/* 3. Mutual Matches Section */}
         <div className="dash-section dashboard-full-width">
           <MutualMatches />
         </div>
+
+        {/* 4. Recommended Users Section */}
         <div className="dash-section dashboard-full-width">
-  <RecommendedUsers />
-  
-<div className="dash-section dashboard-full-width">
-  <TrendingAndRating />
-</div>
-</div>
+          <RecommendedUsers />
+        </div>
+
+        {/* 5. Trending & Rating Section */}
+        <div className="dash-section dashboard-full-width">
+          <TrendingAndRating />
+        </div>
       </main>
     </div>
   );

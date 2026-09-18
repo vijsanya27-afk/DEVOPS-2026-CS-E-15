@@ -75,7 +75,7 @@ const RecommendedUsers = ({ users = defaultUsers }) => {
             justifyContent: 'space-between'
           }}>
             <div>
-              <div style={{ display: 'flex', justify: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <h4 style={{ margin: 0, fontSize: '14px', fontWeight: '600', color: '#0f172a' }}>
                   {user.name}
                 </h4>
@@ -104,7 +104,7 @@ const RecommendedUsers = ({ users = defaultUsers }) => {
             </div>
             
             <button 
-              onClick={() => navigate(`/profile`)}
+              onClick={() => navigate('/profile')}
               style={{
                 marginTop: '12px',
                 padding: '8px 12px',

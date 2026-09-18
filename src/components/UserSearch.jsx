@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 // Demo User Data with Skill Levels & Categories
 const MOCK_USERS = [
@@ -14,18 +14,20 @@ export default function SearchWithFilters() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
 
-  // Advanced Multi-filter Logic
-  const filteredUsers = MOCK_USERS.filter((user) => {
-    const matchesSearch =
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.skill.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesLevel = selectedLevel === 'All' || user.level === selectedLevel;
-    const matchesCategory = selectedCategory === 'All' || user.category === selectedCategory;
-    const matchesAvailability = showAvailableOnly ? user.available : true;
+  // Advanced Multi-filter Logic with Performance Memoization
+  const filteredUsers = useMemo(() => {
+    return MOCK_USERS.filter((user) => {
+      const matchesSearch =
+        user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.skill.toLowerCase().includes(searchTerm.toLowerCase());
+      
+      const matchesLevel = selectedLevel === 'All' || user.level === selectedLevel;
+      const matchesCategory = selectedCategory === 'All' || user.category === selectedCategory;
+      const matchesAvailability = showAvailableOnly ? user.available : true;
 
-    return matchesSearch && matchesLevel && matchesCategory && matchesAvailability;
-  });
+      return matchesSearch && matchesLevel && matchesCategory && matchesAvailability;
+    });
+  }, [searchTerm, selectedLevel, selectedCategory, showAvailableOnly]);
 
   const resetFilters = () => {
     setSearchTerm('');

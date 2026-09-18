@@ -113,9 +113,9 @@ function TopMentors() {
 
               {/* Skills */}
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "16px" }}>
-                {mentor.skills.map((skill, index) => (
+                {mentor.skills.map((skill) => (
                   <span
-                    key={index}
+                    key={skill}
                     style={{
                       fontSize: "11px",
                       background: "#eff6ff",

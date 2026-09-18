@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SkillCard from "./SkillCard"; // 1. SkillCard Import Kiya
+import SkillCard from "./SkillCard";
 import "./SkillsOffered.css";
 
 const SkillsOffered = () => {
@@ -33,7 +33,6 @@ const SkillsOffered = () => {
     setSkills(skills.filter((skill) => skill !== skillToRemove));
   };
 
-  // 2. Edit functionality ke liye handler
   const handleUpdateSkill = (oldName, newName) => {
     if (!newName.trim()) return;
     setSkills(skills.map((s) => (s === oldName ? newName.trim() : s)));
@@ -66,11 +65,10 @@ const SkillsOffered = () => {
 
         {error && <p className="so-error-message">{error}</p>}
 
-        {/* 3. SkillCard component render kiya */}
         <div className="so-skills-list">
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <SkillCard
-              key={index}
+              key={skill}
               name={skill}
               variant="offered"
               onUpdate={handleUpdateSkill}
