@@ -50,7 +50,9 @@ function ForgotPassword() {
         <p>Enter your registered email to reset your password.</p>
 
         <form onSubmit={handleForgotPassword}>
+          <label htmlFor="forgot-email">Email</label>
           <input
+            id="forgot-email"
             type="email"
             placeholder="Enter your email"
             value={email}

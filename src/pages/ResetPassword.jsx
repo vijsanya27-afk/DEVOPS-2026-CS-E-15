@@ -63,8 +63,10 @@ function ResetPassword() {
         <p className="reset-info">
           Create a new password for your account.
         </p>
-
+         
+          <label htmlFor="new-password">New Password</label>
         <input
+         id="new-password"
           type="password"
           placeholder="New Password"
           value={password}
@@ -73,8 +75,9 @@ function ResetPassword() {
             setError("");
           }}
         />
-
+         <label htmlFor="confirm-password">Confirm Password</label>
         <input
+          id="confirm-password"
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}

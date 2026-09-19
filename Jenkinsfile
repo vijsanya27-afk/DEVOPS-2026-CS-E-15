@@ -44,6 +44,12 @@ pipeline {
                 bat 'npm run build'
             }
         }
+
+        stage('Docker Build') {
+    steps {
+        bat 'docker build -t skill-exchange-platform:latest .'
+    }
+}
     }
 
     post {

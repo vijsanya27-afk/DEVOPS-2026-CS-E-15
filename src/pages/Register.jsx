@@ -41,27 +41,33 @@ function Register() {
       <h1>Create Account</h1>
 
       <form onSubmit={handleRegister}>
-        <input
-          type="text"
+        <label htmlFor="register-name">Name</label>
+      <input
+       id="register-name"
+        type="text"
           placeholder="Enter your name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
+      value={name}
+            onChange={(event) => setName(event.target.value)}
+         />
+        
+            <label htmlFor="register-email">Email</label>
+           <input
+             id="register-email"
+               type="email"
+                 placeholder="Enter your email"
+                   value={email}
+                     onChange={(event) => setEmail(event.target.value)}
+          />
 
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-
-        <input
-          type="password"
-          placeholder="Create password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-
+        <label htmlFor="register-password">Password</label>
+         <input
+          id="register-password"
+            type="password"
+              placeholder="Create password"
+                value={password}
+                 onChange={(event) => setPassword(event.target.value)}
+         />
+         
         <button type="submit">Register</button>
       </form>
     </div>
