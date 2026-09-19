@@ -10,10 +10,12 @@ function RequestModal({ request, onClose }) {
 
   const handleAccept = () => {
     setStatus("Accepted");
+    localStorage.setItem("exchangeRequestStatus", "Accepted");
   };
-
+  
   const handleReject = () => {
     setStatus("Rejected");
+    localStorage.setItem("exchangeRequestStatus", "Rejected");
   };
 
   return (

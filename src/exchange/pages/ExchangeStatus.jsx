@@ -2,12 +2,13 @@ import ExchangeLayout from "../components/ExchangeLayout";
 import "./ExchangeStatus.css";
 
 function ExchangeStatus() {
+  const savedStatus = localStorage.getItem("exchangeRequestStatus") || "Pending";
   const requests = [
     {
       id: 1,
       skill: "Python",
       person: "Priya",
-      status: "Pending",
+      status: savedStatus,
     },
     {
       id: 2,
