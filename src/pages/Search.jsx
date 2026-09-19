@@ -1,12 +1,148 @@
-import React from "react";
-import UserSearch from "../components/UserSearch";
+import React, { useState, useMemo, useEffect } from 'react';
 
-function Search() {
+const MOCK_USERS = [
+  { id: 1, name: 'Sarah Connor', role: 'Frontend Developer', skill: 'React', level: 'Expert', category: 'Development', available: true },
+  { id: 2, name: 'Alex Mercer', role: 'UI/UX Designer', skill: 'Figma', level: 'Intermediate', category: 'Design', available: false },
+  { id: 3, name: 'Elena Rostova', role: 'Full Stack Engineer', skill: 'Node.js', level: 'Expert', category: 'Development', available: true },
+  { id: 4, name: 'Marcus Brody', role: 'Data Scientist', skill: 'Python', level: 'Beginner', category: 'Data Science', available: true },
+];
+
+export default function UserSearch() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedLevel, setSelectedLevel] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [showAvailableOnly, setShowAvailableOnly] = useState(false);
+  
+  // Loading aur Error states
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [users, setUsers] = useState(MOCK_USERS);
+
+  // Jab bhi search query ya filters change hon, ek smooth loading state simulate hogi
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    const timer = setTimeout(() => {
+      try {
+        setUsers(MOCK_USERS);
+        setLoading(false);
+      } catch (err) {
+        setError('Failed to fetch results.');
+        setLoading(false);
+      }
+    }, 300); // 300ms ka chota delay taaki natural feel aaye
+
+    return () => clearTimeout(timer);
+  }, [searchTerm, selectedLevel, selectedCategory, showAvailableOnly]);
+
+  const filteredUsers = useMemo(() => {
+    const trimmedQuery = searchTerm.trim().toLowerCase();
+
+    return users.filter((user) => {
+      const matchesSearch =
+        user.name.toLowerCase().includes(trimmedQuery) ||
+        user.skill.toLowerCase().includes(trimmedQuery);
+      
+      const matchesLevel = selectedLevel === 'All' || user.level === selectedLevel;
+      const matchesCategory = selectedCategory === 'All' || user.category === selectedCategory;
+      const matchesAvailability = showAvailableOnly ? user.available : true;
+
+      return matchesSearch && matchesLevel && matchesCategory && matchesAvailability;
+    });
+  }, [users, searchTerm, selectedLevel, selectedCategory, showAvailableOnly]);
+
+  const resetFilters = () => {
+    setSearchTerm('');
+    setSelectedLevel('All');
+    setSelectedCategory('All');
+    setShowAvailableOnly(false);
+  };
+
   return (
-    <div style={{ padding: "20px" }}>
-      <UserSearch />
+    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '1rem', fontFamily: 'sans-serif' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Search Users & Skill Filters</h2>
+
+      {/* Filter Section Controls */}
+      <div style={{ backgroundColor: '#f8fafc', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid #e2e8f0' }}>
+        <input
+          type="text"
+          placeholder="Search by name or skill..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          style={{ width: '100%', padding: '0.6rem', marginBottom: '1rem', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box' }}
+        />
+
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          <div>
+            <label style={{ fontSize: '0.85rem', fontWeight: 'bold', display: 'block' }}>Skill Level:</label>
+            <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)} style={{ padding: '0.4rem', borderRadius: '4px' }}>
+              <option value="All">All Levels</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+
+          <div>
+            <label style={{ fontSize: '0.85rem', fontWeight: 'bold', display: 'block' }}>Category:</label>
+            <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} style={{ padding: '0.4rem', borderRadius: '4px' }}>
+              <option value="All">All Categories</option>
+              <option value="Development">Development</option>
+              <option value="Design">Design</option>
+              <option value="Data Science">Data Science</option>
+            </select>
+          </div>
+
+          <div style={{ marginTop: '1.2rem' }}>
+            <label style={{ cursor: 'pointer', fontSize: '0.9rem' }}>
+              <input type="checkbox" checked={showAvailableOnly} onChange={(e) => setShowAvailableOnly(e.target.checked)} />
+              {' '}Available Only
+            </label>
+          </div>
+
+          <button onClick={resetFilters} style={{ marginTop: '1.2rem', padding: '0.4rem 0.8rem', cursor: 'pointer', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px' }}>
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      {/* Loading State */}
+      {loading && (
+        <div style={{ textAlign: 'center', padding: '2rem', color: '#4f46e5', fontWeight: 'bold' }}>
+          Searching results... ⌛
+        </div>
+      )}
+
+      {/* Error State */}
+      {error && (
+        <div style={{ textAlign: 'center', padding: '2rem', color: '#ef4444', fontWeight: 'bold' }}>
+          ⚠️ {error}
+        </div>
+      )}
+
+      {/* Render Filtered User List */}
+      {!loading && !error && (
+        <div>
+          {filteredUsers.length > 0 ? (
+            filteredUsers.map((user) => (
+              <div key={user.id} style={{ padding: '1rem', border: '1px solid #ddd', borderRadius: '6px', marginBottom: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff' }}>
+                <div>
+                  <h4 style={{ margin: '0 0 0.25rem 0' }}>{user.name}</h4>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: '#555' }}>
+                    {user.skill} • <strong>{user.level}</strong> ({user.category})
+                  </p>
+                </div>
+                <span style={{ fontSize: '0.8rem', padding: '0.2rem 0.5rem', borderRadius: '4px', backgroundColor: user.available ? '#d1fae5' : '#f3f4f6', color: user.available ? '#065f46' : '#374151' }}>
+                  {user.available ? 'Available' : 'Busy'}
+                </span>
+              </div>
+            ))
+          ) : (
+            <p style={{ color: '#777', textAlign: 'center', padding: '1.5rem' }}>No users match the selected filter criteria.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
-
-export default Search;

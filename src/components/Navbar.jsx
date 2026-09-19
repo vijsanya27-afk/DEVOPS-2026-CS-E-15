@@ -16,11 +16,7 @@ function Navbar() {
       <h2 onClick={() => navigate("/")} style={{ cursor: "pointer" }}>Skill Exchange</h2>
       <div className="navbar-links">
         <Link to="/">Home</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/search">Search</Link>
-        <Link to="/skills">Skills</Link>
         <Link to="/exchange">Exchange</Link>
-        <Link to="/reviews">Reviews</Link>
         <Link to="/login">Login</Link>
       </div>
     </nav>

@@ -47,3 +47,69 @@ button {
   border: none;
   outline: none;
 }
+
+
+/* Quick Layout Recovery Fix */
+#root {
+  display: block !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9fafb;
+}
+/* ALL-IN-ONE MOBILE RESPONSIVE FIX */
+@media screen and (max-width: 768px) {
+  /* Page overflow scroll stop */
+  html, body, #root {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* All containers box fitting */
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
+  /* Force cards, forms and grids to shrink */
+  .container, .card, main, form, div {
+    max-width: 100% !important;
+  }
+
+  /* Grid to Single Column */
+  [class*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Navbar clean spacing */
+  .navbar-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  /* Input and Button cut-off fix */
+  .skills-input-wrapper, form, .add-skill-form {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+  }
+
+  input[type="text"], input, select {
+    width: 100% !important;
+    min-width: 0 !important; /* Fixes button overflow */
+    flex: 1 !important;
+  }
+
+  button {
+    flex-shrink: 0 !important;
+  }
+}

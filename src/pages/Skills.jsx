@@ -45,18 +45,7 @@ const Skills = () => {
       boxSizing: 'border-box'
     }}>
       
-      {/* Scope container widths */}
-      <style>{`
-        .so-card-container,
-        .sw-card-container,
-        .so-page-wrapper,
-        .sw-page-wrapper,
-        .skills-card-container {
-          max-width: 800px !important;
-          width: 100% !important;
-          margin: 0 auto !important;
-        }
-      `}</style>
+      
 
       {/* Title */}
       <h1 style={{ 

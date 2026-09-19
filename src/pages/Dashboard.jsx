@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import Sidebar from '../components/Sidebar.jsx';
 import StatCard from '../components/StatCard.jsx';
 import MutualMatches from '../components/MutualMatches.jsx';
 import RecommendedUsers from '../components/RecommendedUsers.jsx';
@@ -24,7 +23,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-page">
-      <Sidebar />
+      {/* Yahan se purana <Sidebar /> hata diya hai kyunki ab wo layout se handle ho raha hai */}
 
       <main className="dashboard-main">
         {/* Header */}

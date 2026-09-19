@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 
-// Demo User Data with Skill Levels & Categories
 const MOCK_USERS = [
   { id: 1, name: 'Sarah Connor', role: 'Frontend Developer', skill: 'React', level: 'Expert', category: 'Development', available: true },
   { id: 2, name: 'Alex Mercer', role: 'UI/UX Designer', skill: 'Figma', level: 'Intermediate', category: 'Design', available: false },
@@ -13,13 +12,32 @@ export default function SearchWithFilters() {
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
+  
+  // New Validation State
+  const [searchError, setSearchError] = useState('');
 
-  // Advanced Multi-filter Logic with Performance Memoization
+  // Handle Search Input with Validation
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+
+    // Validation 1: Character limit check (e.g., max 35 chars)
+    if (value.length > 35) {
+      setSearchError('Search query cannot exceed 35 characters.');
+    } else {
+      setSearchError('');
+    }
+
+    setSearchTerm(value);
+  };
+
+  // Advanced Multi-filter Logic with Validation & Memoization
   const filteredUsers = useMemo(() => {
+    const trimmedQuery = searchTerm.trim().toLowerCase();
+
     return MOCK_USERS.filter((user) => {
       const matchesSearch =
-        user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.skill.toLowerCase().includes(searchTerm.toLowerCase());
+        user.name.toLowerCase().includes(trimmedQuery) ||
+        user.skill.toLowerCase().includes(trimmedQuery);
       
       const matchesLevel = selectedLevel === 'All' || user.level === selectedLevel;
       const matchesCategory = selectedCategory === 'All' || user.category === selectedCategory;
@@ -34,6 +52,7 @@ export default function SearchWithFilters() {
     setSelectedLevel('All');
     setSelectedCategory('All');
     setShowAvailableOnly(false);
+    setSearchError('');
   };
 
   return (
@@ -46,11 +65,18 @@ export default function SearchWithFilters() {
           type="text"
           placeholder="Search by name or skill..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ width: '100%', padding: '0.6rem', marginBottom: '1rem', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box' }}
+          onChange={handleSearchChange}
+          style={{ width: '100%', padding: '0.6rem', marginBottom: '0.5rem', borderRadius: '4px', border: searchError ? '1px solid #ef4444' : '1px solid #ccc', boxSizing: 'border-box' }}
         />
+        
+        {/* Validation Error Text */}
+        {searchError && (
+          <p style={{ color: '#ef4444', fontSize: '0.8rem', margin: '0 0 1rem 0' }}>
+            {searchError}
+          </p>
+        )}
 
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', marginTop: searchError ? '0' : '1rem' }}>
           {/* Skill Level Filter */}
           <div>
             <label style={{ fontSize: '0.85rem', fontWeight: 'bold', display: 'block' }}>Skill Level:</label>
