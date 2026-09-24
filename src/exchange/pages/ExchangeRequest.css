@@ -65,5 +65,26 @@
       margin-bottom: 10px;
       font-weight: 500;
     }
+.exchange-request {
+  padding: 32px;
+}
 
-  
+.exchange-request h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.request-card {
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.request-card button {
+  background: #4f46e5;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.request-card button:hover {
+  background: #4338ca;
+}

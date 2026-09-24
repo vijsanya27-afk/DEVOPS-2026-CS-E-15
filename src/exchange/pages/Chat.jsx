@@ -77,7 +77,7 @@ function Chat() {
   const handleSend = (e, selectedFile = null) => {
     e.preventDefault();
 
-    if (!message.trim()) {
+    if (!message.trim() && !selectedFile) {
       return;
     }
 

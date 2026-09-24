@@ -80,18 +80,28 @@ function MessageComposer({ message, setMessage, onSend }) {
         </button>
 
         {/* File Button */}
-        <label className="file-button">
-          📎
-          <input
-            type="file"
-            onChange={handleFileChange}
-            hidden
-          />
-        </label>
-
+        <label
+  className="file-button"
+  aria-label="Attach a file"
+  tabIndex="0"
+  onKeyDown={(e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.currentTarget.click();
+    }
+  }}
+>
+  📎
+  <input
+    type="file"
+    onChange={handleFileChange}
+    hidden
+  />
+</label>
         {/* Message Input */}
         <input
           type="text"
+          aria-label="Type a message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."

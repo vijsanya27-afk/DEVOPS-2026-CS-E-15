@@ -99,3 +99,16 @@
   margin-top: 15px !important;
   color: #555 !important;
 }
+.exchange-status {
+  padding: 32px;
+}
+
+.exchange-status h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.status-card {
+  padding: 24px;
+  border-radius: 12px;
+}

@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -13,7 +13,6 @@ body {
   line-height: 1.5;
   overflow-x: hidden;
 }
-
 
 :root {
   --bg-color: #f8f9fa;
@@ -97,9 +96,14 @@ body {
   }
 
   /* Input and Button cut-off fix */
-  .skills-input-wrapper, form, .add-skill-form {
+  .skills-input-wrapper,
+  .add-skill-form {
     display: flex !important;
     flex-direction: row !important;
+    width: 100% !important;
+  }
+  
+  form {
     width: 100% !important;
   }
 
@@ -113,12 +117,11 @@ body {
     flex-shrink: 0 !important;
   }
 }
-/* Accessibility Focus States for Keyboard Navigation */
+/*  Keyboard focus */
 button:focus-visible,
 input:focus-visible,
-select:focus-visible,
-a:focus-visible {
-  outline: 2px solid #4f46e5;
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #4f46e5 !important;
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
 }

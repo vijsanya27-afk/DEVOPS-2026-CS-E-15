@@ -119,3 +119,44 @@
       font-size: 15px;
     }
   }
+  .form-error {
+    margin-top: 6px;
+    margin-bottom: 0;
+    color: #dc3545;
+    font-size: 14px;
+    font-weight: 500;
+  }
+.session-page {
+  padding: 32px 20px;
+}
+
+.session-card {
+  padding: 32px;
+  border-radius: 12px;
+}
+
+.session-card h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.session-card button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.session-card button:hover {
+  background: #4338ca;
+}
+
+.session-card button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
