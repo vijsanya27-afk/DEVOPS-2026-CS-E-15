@@ -1,3 +1,4 @@
+import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import StatCard from '../components/StatCard.jsx';
 import MutualMatches from '../components/MutualMatches.jsx';
@@ -7,6 +8,10 @@ import './Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
+
+  // Search & Filter State
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("ALL");
 
   const statsData = [
     { id: 1, title: 'My Skills', value: '5 Active', change: '+2 this week', icon: '⚡' },
@@ -21,10 +26,24 @@ const Dashboard = () => {
     { id: 3, name: 'Aman Gupta', skill: 'Data Structures', lookingFor: 'Java', status: 'Pending' },
   ];
 
+  // Validated Search & Filter Logic
+  const filteredRequests = useMemo(() => {
+    const cleanSearch = searchTerm.trim().toLowerCase();
+
+    return recentRequests.filter((req) => {
+      const nameMatch = req.name?.toLowerCase().includes(cleanSearch);
+      const skillMatch = req.skill?.toLowerCase().includes(cleanSearch);
+      const lookingForMatch = req.lookingFor?.toLowerCase().includes(cleanSearch);
+
+      const matchesSearch = cleanSearch === "" || nameMatch || skillMatch || lookingForMatch;
+      const matchesStatus = statusFilter === "ALL" || req.status.toLowerCase() === statusFilter.toLowerCase();
+
+      return matchesSearch && matchesStatus;
+    });
+  }, [searchTerm, statusFilter]);
+
   return (
     <div className="dashboard-page">
-      {/* Yahan se purana <Sidebar /> hata diya hai kyunki ab wo layout se handle ho raha hai */}
-
       <main className="dashboard-main">
         {/* Header */}
         <header className="dashboard-header">
@@ -49,15 +68,40 @@ const Dashboard = () => {
         <div className="dashboard-content-grid">
           {/* Recent Skill Requests */}
           <div className="dash-section">
-            <div className="section-header">
-              <h3>Recent Skill Requests</h3>
-              <button
-                className="btn-view-all"
-                onClick={() => navigate("/requests")}
-              >
-                View All
-              </button>
+            <div className="section-header" style={{ flexDirection: "column", alignItems: "flex-start", gap: "10px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
+                <h3>Recent Skill Requests</h3>
+                <button
+                  className="btn-view-all"
+                  onClick={() => navigate("/requests")}
+                >
+                  View All
+                </button>
+              </div>
+
+              {/* Search & Filter Controls with Accessibility */}
+              <div className="filter-controls" style={{ display: "flex", gap: "10px", width: "100%", flexWrap: "wrap" }}>
+                <input
+                  type="text"
+                  aria-label="Search user, skill, or wants"
+                  placeholder="Search user, skill, or wants..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  style={{ padding: "8px 12px", borderRadius: "6px", border: "1px solid #ccc", flex: "1", minWidth: "180px" }}
+                />
+                <select
+                  aria-label="Filter status"
+                  value={statusFilter}
+                  onChange={(e) => setStatusFilter(e.target.value)}
+                  style={{ padding: "8px 12px", borderRadius: "6px", border: "1px solid #ccc" }}
+                >
+                  <option value="ALL">All Status</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Accepted">Accepted</option>
+                </select>
+              </div>
             </div>
+
             <table className="requests-table">
               <thead>
                 <tr>
@@ -68,18 +112,26 @@ const Dashboard = () => {
                 </tr>
               </thead>
               <tbody>
-                {recentRequests.map((req) => (
-                  <tr key={req.id}>
-                    <td><strong>{req.name}</strong></td>
-                    <td><span className="skill-tag">{req.skill}</span></td>
-                    <td><span className="skill-tag alt">{req.lookingFor}</span></td>
-                    <td>
-                      <span className={`status-badge ${req.status.toLowerCase()}`}>
-                        {req.status}
-                      </span>
+                {filteredRequests.length > 0 ? (
+                  filteredRequests.map((req) => (
+                    <tr key={req.id}>
+                      <td><strong>{req.name}</strong></td>
+                      <td><span className="skill-tag">{req.skill}</span></td>
+                      <td><span className="skill-tag alt">{req.lookingFor}</span></td>
+                      <td>
+                        <span className={`status-badge ${req.status.toLowerCase()}`}>
+                          {req.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="4" style={{ textAlign: "center", padding: "15px", color: "#666" }}>
+                      No matching requests found.
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>

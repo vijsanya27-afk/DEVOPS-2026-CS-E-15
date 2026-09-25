@@ -18,7 +18,7 @@ export default function UserSearch() {
   const [error, setError] = useState(null);
   const [users, setUsers] = useState(MOCK_USERS);
 
-  // Jab bhi search query ya filters change hon, ek smooth loading state simulate hogi
+  // Debounced search and loading state simulation
   useEffect(() => {
     setLoading(true);
     setError(null);
@@ -31,22 +31,28 @@ export default function UserSearch() {
         setError('Failed to fetch results.');
         setLoading(false);
       }
-    }, 300); // 300ms ka chota delay taaki natural feel aaye
+    }, 300); // 300ms debounce delay
 
+    // Cleanup timer to prevent memory leaks and unnecessary triggers
     return () => clearTimeout(timer);
   }, [searchTerm, selectedLevel, selectedCategory, showAvailableOnly]);
 
+  // Robust & Validated Filtering Logic
   const filteredUsers = useMemo(() => {
+    // 1. Input Trimming & Normalization
     const trimmedQuery = searchTerm.trim().toLowerCase();
 
     return users.filter((user) => {
-      const matchesSearch =
-        user.name.toLowerCase().includes(trimmedQuery) ||
-        user.skill.toLowerCase().includes(trimmedQuery);
+      // Safe checks in case data properties are missing/null
+      const nameMatch = user.name ? user.name.toLowerCase().includes(trimmedQuery) : false;
+      const skillMatch = user.skill ? user.skill.toLowerCase().includes(trimmedQuery) : false;
+      const roleMatch = user.role ? user.role.toLowerCase().includes(trimmedQuery) : false;
+
+      const matchesSearch = trimmedQuery === '' || nameMatch || skillMatch || roleMatch;
       
       const matchesLevel = selectedLevel === 'All' || user.level === selectedLevel;
       const matchesCategory = selectedCategory === 'All' || user.category === selectedCategory;
-      const matchesAvailability = showAvailableOnly ? user.available : true;
+      const matchesAvailability = showAvailableOnly ? Boolean(user.available) : true;
 
       return matchesSearch && matchesLevel && matchesCategory && matchesAvailability;
     });
@@ -67,7 +73,7 @@ export default function UserSearch() {
       <div style={{ backgroundColor: '#f8fafc', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid #e2e8f0' }}>
         <input
           type="text"
-          placeholder="Search by name or skill..."
+          placeholder="Search by name, skill, or role..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ width: '100%', padding: '0.6rem', marginBottom: '1rem', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box' }}
@@ -128,7 +134,7 @@ export default function UserSearch() {
             filteredUsers.map((user) => (
               <div key={user.id} style={{ padding: '1rem', border: '1px solid #ddd', borderRadius: '6px', marginBottom: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff' }}>
                 <div>
-                  <h4 style={{ margin: '0 0 0.25rem 0' }}>{user.name}</h4>
+                  <h4 style={{ margin: '0 0 0.25rem 0' }}>{user.name} <span style={{ fontSize: '0.8rem', color: '#666', fontWeight: 'normal' }}>({user.role})</span></h4>
                   <p style={{ margin: 0, fontSize: '0.85rem', color: '#555' }}>
                     {user.skill} • <strong>{user.level}</strong> ({user.category})
                   </p>
