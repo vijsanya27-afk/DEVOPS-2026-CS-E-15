@@ -85,3 +85,20 @@
       grid-template-columns: 1fr;
     }
   }
+.exchange-history {
+  padding: 32px;
+}
+
+.exchange-history h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.exchange-history-card {
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.history-item {
+  border-radius: 12px;
+}

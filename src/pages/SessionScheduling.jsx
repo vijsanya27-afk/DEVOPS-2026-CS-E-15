@@ -11,40 +11,75 @@ function SessionScheduling() {
   });
 
   const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+  
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+  
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  
+    if (message) {
+      setMessage("");
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !formData.partner ||
-      !formData.skill ||
-      !formData.date ||
-      !formData.time
-    ) {
-      setMessage("Please fill all required fields.");
-      return;
-    }
+    const newErrors = {};
 
-    setMessage("Session scheduled successfully!");
+if (!formData.partner.trim()) {
+  newErrors.partner = "Please enter partner name.";
+}
 
-    setFormData({
-      partner: "",
-      skill: "",
-      date: "",
-      time: "",
-      notes: "",
-    });
+if (!formData.skill.trim()) {
+  newErrors.skill = "Please enter the skill.";
+}
+
+if (!formData.date) {
+  newErrors.date = "Please select a date.";
+}
+
+if (!formData.time) {
+  newErrors.time = "Please select a time.";
+}
+
+setErrors(newErrors);
+
+if (Object.keys(newErrors).length > 0) {
+  setMessage("");
+  return;
+}
+
+setIsSubmitting(true);
+setMessage("");
+
+setTimeout(() => {
+  setIsSubmitting(false);
+  setMessage("Session scheduled successfully!");
+
+  setFormData({
+    partner: "",
+    skill: "",
+    date: "",
+    time: "",
+    notes: "",
+  });
+
+  setErrors({});
+}, 700);
   };
-
   return (
     <div className="session-page">
       <div className="session-card">
@@ -64,6 +99,9 @@ function SessionScheduling() {
               value={formData.partner}
               onChange={handleChange}
             />
+            {errors.partner && (
+            <p className="form-error">{errors.partner}</p>
+            )}
           </div>
 
           <div className="form-group">
@@ -76,6 +114,9 @@ function SessionScheduling() {
               value={formData.skill}
               onChange={handleChange}
             />
+          {errors.skill && (
+          <p className="form-error">{errors.skill}</p>
+          )}
           </div>
 
           <div className="form-row">
@@ -88,6 +129,9 @@ function SessionScheduling() {
                 value={formData.date}
                 onChange={handleChange}
               />
+              {errors.date && (
+              <p className="form-error">{errors.date}</p>
+              )}
             </div>
 
             <div className="form-group">
@@ -99,6 +143,9 @@ function SessionScheduling() {
                 value={formData.time}
                 onChange={handleChange}
               />
+              {errors.time && (
+              <p className="form-error">{errors.time}</p>
+              )}
             </div>
           </div>
 
@@ -114,8 +161,8 @@ function SessionScheduling() {
             />
           </div>
 
-          <button type="submit" className="schedule-button">
-            Schedule Session
+          <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Scheduling..." : "Schedule Session"}
           </button>
         </form>
 

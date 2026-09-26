@@ -10,6 +10,7 @@ function ExchangeRequest() {
   const [learningSkill, setLearningSkill] = useState("");
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const request = {
     name: "Priya",
@@ -34,7 +35,12 @@ function ExchangeRequest() {
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      setShowModal(true);
+      setIsSubmitting(true);
+    
+      setTimeout(() => {
+        setIsSubmitting(false);
+        setShowModal(true);
+      }, 700);
     }
   };
 
@@ -52,9 +58,10 @@ function ExchangeRequest() {
 
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Your Skill</label>
+              <label htmlFor="yourSkill">Your Skill</label>
 
               <input
+              id="yourSkill"
                 type="text"
                 value={yourSkill}
                 onChange={(e) => {
@@ -76,9 +83,10 @@ function ExchangeRequest() {
             </div>
 
             <div>
-              <label>Skill You Want to Learn</label>
+              <label htmlFor="learningSkill">Skill You Want to Learn</label>
 
               <input
+                id="learningSkill"
                 type="text"
                 value={learningSkill}
                 onChange={(e) => {
@@ -100,8 +108,9 @@ function ExchangeRequest() {
                 </p>
               )}
             </div>
-
-            <button type="submit">Send Request</button>
+          <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Request"}
+          </button>
           </form>
         </div>
 

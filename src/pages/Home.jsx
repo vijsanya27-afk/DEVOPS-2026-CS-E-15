@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <main className="home">
 
@@ -12,7 +15,9 @@ function Home() {
           Learn skills, share knowledge, and connect with others.
         </p>
 
-        <button>Explore Skills</button>
+        <button onClick={() => navigate("/register")}>
+           Explore Skills
+           </button>
       </section>
 
       {/* Feature Sections */}

@@ -407,3 +407,25 @@
     font-size: 12px;
   }
 }
+.chat-page {
+  padding: 32px;
+}
+
+.chat-header h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.chat-container {
+  border-radius: 12px;
+}
+
+.message-form button {
+  background: #4f46e5;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.message-form button:hover {
+  background: #4338ca;
+}
