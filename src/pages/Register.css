@@ -119,3 +119,24 @@
 .register input::placeholder {
   color: #6b7280;
 }
+.login-link {
+  margin-top: 10px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.login-link button {
+  border: none;
+  background: none;
+  color: #4f46e5;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-link button:hover {
+  text-decoration: underline;
+}
