@@ -1,52 +1,94 @@
 .dashboard-layout {
-    display: flex;
-    min-height: 85vh;
-    background-color: #f8fafc;
+  display: flex;
+  min-height: 85vh;
+  background-color: #f8fafc;
+}
+
+.dashboard-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  transition: width 0.25s ease;
+  overflow: hidden;
+}
+
+.dashboard-sidebar:not(.sidebar-open) {
+  width: 60px !important;
+  padding: 15px 10px !important;
+  overflow: hidden;
+}
+
+.dashboard-sidebar:not(.sidebar-open) ul {
+  display: none !important;
+}
+
+.dashboard-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-toggle {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  background: transparent;
+  color: #333;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    position: relative;
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden;
   }
-  
-  .dashboard-sidebar {
-    width: 250px;
-    flex-shrink: 0;
-  }
-  
-  .dashboard-content {
-    flex: 1;
+}
+/*  Mobile responsive fix */
+@media (max-width: 768px) {
+
+  .dashboard-layout {
+    display: flex !important;
+    flex-direction: row !important;
+    position: relative;
+    width: 100%;
     min-width: 0;
+    overflow-x: hidden;
   }
-  
-  /* Mobile */
-  @media (max-width: 768px) {
-    .dashboard-layout {
-      flex-direction: column !important;
-      width: 100%;
-    }
-  
-    .dashboard-sidebar {
-      width: 100% !important;
-      border-right: none !important;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 12px !important;
-    }
-  
-    .dashboard-sidebar ul {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px !important;
-    }
-  
-    .dashboard-sidebar li {
-      text-align: center;
-    }
-  
-    .dashboard-sidebar a {
-      display: block;
-      padding: 8px 4px;
-      font-size: 14px;
-    }
-  
-    .dashboard-content {
-      width: 100% !important;
-      min-width: 0;
-      padding: 20px 12px !important;
-    }
+
+  .dashboard-sidebar {
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    width: 60px !important;
+    min-width: 60px !important;
+    height: 100%;
+    min-height: 100%;
+    padding: 15px 10px !important;
+    box-sizing: border-box;
+    z-index: 1000;
   }
+
+  .dashboard-sidebar.sidebar-open {
+    width: 250px !important;
+    min-width: 250px !important;
+  }
+
+  .dashboard-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    padding: 20px 12px 20px 72px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden;
+  }
+
+  .dashboard-sidebar.sidebar-open ~ .dashboard-content {
+    padding-left: 262px !important;
+  }
+}

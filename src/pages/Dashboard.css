@@ -126,3 +126,199 @@
   border: 1px solid #cbd5e1;
   color: #334155;
 }
+/* Day 35 - Mobile Dashboard Navigation/Responsive Fix */
+
+.dashboard-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.dashboard-main {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Prevent dashboard sections from forcing horizontal overflow */
+.dash-section,
+.dashboard-full-width {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .dashboard-main {
+    padding: 16px !important;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-header p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* Stats cards */
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .dash-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Recent requests + Quick Actions */
+  .dashboard-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .dash-section {
+    width: 100%;
+    padding: 16px;
+  }
+
+  /* Table stays inside its section */
+  .requests-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .requests-table th,
+  .requests-table td {
+    white-space: nowrap;
+  }
+
+  /* Mutual matches */
+  .matches-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .matches-grid {
+    grid-template-columns: 1fr !important;
+    width: 100%;
+  }
+
+  .match-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .match-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Full-width dashboard sections */
+  .dashboard-full-width {
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px;
+    overflow: hidden;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden;
+  }
+
+  .dashboard-main {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-content-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dash-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .dashboard-full-width {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .matches-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .matches-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .match-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .match-card-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .requests-table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0 !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .dashboard-header {
+    width: 100%;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .dashboard-header h1,
+  .dashboard-header p {
+    margin-left: 0 !important;
+  }
+
+.dashboard-full-width:has(> .trending-rating-container) {
+  padding: 16px !important;
+}
+}

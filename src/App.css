@@ -102,6 +102,9 @@ body {
     flex-direction: row !important;
     width: 100% !important;
   }
+  form {
+    width: 100% !important;
+  }
 
   input[type="text"], input, select {
     width: 100% !important;

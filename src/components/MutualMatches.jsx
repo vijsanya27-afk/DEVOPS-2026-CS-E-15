@@ -30,9 +30,10 @@ const MutualMatchSuggestions = ({ matches = defaultMatches }) => {
       {matches.length > 0 ? (
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px,100%), 1fr))',
           gap: '16px',
-          width: '100%'
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
           {matches.map((user) => (
             <div key={user.id} style={{
@@ -43,7 +44,10 @@ const MutualMatchSuggestions = ({ matches = defaultMatches }) => {
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-start',
-              textAlign: 'left'
+              textAlign: 'left',
+              gap: '10px',
+              minWidth: 0,
+              boxSizing: 'border-box'
             }}>
               <div>
                 <h4 style={{
@@ -70,7 +74,9 @@ const MutualMatchSuggestions = ({ matches = defaultMatches }) => {
                 fontWeight: '600',
                 padding: '4px 10px',
                 borderRadius: '9999px',
-                whiteSpace: 'nowrap'
+                whiteSpace: 'normal',
+                overflowWrap: 'anywhere',
+                textAlign: 'center'
               }}>
                 ✓ Mutual Match
               </span>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React , { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import './DashboardLayout.css';
 
 export default function DashboardLayout() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div
     className="dashboard-layout"
@@ -10,7 +11,9 @@ export default function DashboardLayout() {
   >
       {/* Left Sidebar - Ye ab har dashboard page par permanent dikhega */}
       <div
-      className="dashboard-sidebar"
+  className={`dashboard-sidebar ${
+    isSidebarOpen ? 'sidebar-open' : ''
+  }`}
       style={{
       width: '250px',
       backgroundColor: '#fff',
@@ -19,14 +22,32 @@ export default function DashboardLayout() {
       flexShrink: 0
     }}
     >
+     <button
+  className="sidebar-toggle"
+  onClick={() => setIsSidebarOpen((prev) => !prev)}
+  aria-label={isSidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+  aria-expanded={isSidebarOpen}
+>
+  ☰
+</button>
   <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <li><Link to="/dashboard" style={{ textDecoration: 'none', color: '#4f46e5', fontWeight: 'bold' }}>Dashboard</Link></li>
-          <li><Link to="/profile" style={{ textDecoration: 'none', color: '#333' }}>Profile</Link></li>
-          <li><Link to="/skills" style={{ textDecoration: 'none', color: '#333' }}>Skills</Link></li>
-          <li><Link to="/search" style={{ textDecoration: 'none', color: '#333' }}>Search</Link></li>
-          <li><Link to="/reviews" style={{ textDecoration: 'none', color: '#333' }}>Reviews</Link></li>
+  <li>
+  <Link
+    to="/dashboard"
+    style={{
+      textDecoration: 'none',
+      color: '#4f46e5',
+      fontWeight: 'bold'
+    }}
+  >
+    Dashboard
+  </Link>
+</li> <li><Link to="/profile" style={{ textDecoration: 'none', color: '#333' }}>Profile</Link></li>
+          <li><Link to="/skills"  style={{ textDecoration: 'none', color: '#333' }}>Skills</Link></li>
+          <li><Link to="/search"  style={{ textDecoration: 'none', color: '#333' }}>Search</Link></li>
+          <li><Link to="/reviews"  style={{ textDecoration: 'none', color: '#333' }}>Reviews</Link></li>
           <li><Link to="/requests" style={{ textDecoration: 'none', color: '#333' }}>Requests</Link></li>
-          <li><Link to="/upcoming-sessions" style={{ textDecoration: 'none', color: '#333' }}>Upcoming Sessions</Link></li>
+          <li><Link to="/upcoming-sessions"  style={{ textDecoration: 'none', color: '#333' }}>Upcoming Sessions</Link></li>
         </ul>
       </div>
 

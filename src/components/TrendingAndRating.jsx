@@ -13,7 +13,6 @@ const TrendingAndRating = () => {
   const [hover, setHover] = useState(0);
   const [reviewText, setReviewText] = useState('');
   const [submitted, setSubmitted] = useState(false);
-
   const handleSubmitRating = (e) => {
     e.preventDefault();
     if (rating > 0) {
@@ -28,14 +27,45 @@ const TrendingAndRating = () => {
   };
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', marginTop: '20px' }}>
+  <div
+  className="trending-rating-container"
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
+    gap: '20px',
+    marginTop: '20px',
+    width: '100%',
+    maxWidth: '100%',
+    boxSizing: 'border-box'
+  }}
+  >
       
-      {/* Day 16: Trending Skills UI */}
-      <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'left' }}>
-        <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', color: '#0f172a' }}>🔥 Trending Skills</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          {trendingSkillsList.map((skill) => (
-            <div key={skill.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 14px', backgroundColor: '#f8fafc', borderRadius: '10px', border: '1px solid #f1f5f9' }}>
+  {/* Day 16: Trending Skills UI */}
+  <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'left',  width: '100%',
+  maxWidth: '100%',
+  minWidth: 0,
+  boxSizing: 'border-box'
+  }}>
+      <h3 style={{ margin: '0 0 16px 0', fontSize: '16px', color: '#0f172a' }}>🔥 Trending Skills</h3>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        {trendingSkillsList.map((skill) => (
+          <div
+          key={skill.id}
+          style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '10px',
+          padding: '10px 14px',
+          backgroundColor: '#f8fafc',
+          borderRadius: '10px',
+              border: '1px solid #f1f5f9',
+              boxSizing: 'border-box',
+              maxWidth: '100%',
+              minWidth: 0,
+              flexWrap: 'wrap'
+            }}
+          >
               <div>
                 <h4 style={{ margin: 0, fontSize: '14px', color: '#1e293b' }}>{skill.title}</h4>
                 <span style={{ fontSize: '11px', color: '#64748b' }}>{skill.category} • {skill.count}</span>
@@ -46,7 +76,10 @@ const TrendingAndRating = () => {
                 color: '#475569', 
                 padding: '4px 10px', 
                 borderRadius: '12px', 
-                fontWeight: '600' 
+                fontWeight:'600',
+                whiteSpace:'normal',
+                overflowWrap: 'anywhere',
+                textAlign: 'center'
               }}>
                 {skill.tag}
               </span>
@@ -55,9 +88,20 @@ const TrendingAndRating = () => {
         </div>
       </div>
 
-      {/* Day 17: Ratings Input UI */}
-      <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'left' }}>
-        <h3 style={{ margin: '0 0 8px 0', fontSize: '16px', color: '#0f172a' }}>⭐ Rate Your Experience</h3>
+  {/* Day 17: Ratings Input UI */}
+  <div style={{
+  backgroundColor: '#ffffff',
+  padding: '20px',
+  borderRadius: '16px',
+  border: '1px solid #e2e8f0',
+  textAlign: 'left',
+  width: '100%',
+  maxWidth: '100%',
+  minWidth: 0,
+  boxSizing: 'border-box',
+  overflow: 'visible'
+}}>
+  <h3 style={{ margin: '0 0 8px 0', fontSize: '16px', color: '#0f172a' }}>⭐ Rate Your Experience</h3>
         <p style={{ margin: '0 0 16px 0', fontSize: '12px', color: '#64748b' }}>Leave feedback for your recent skill swap session.</p>
 
         {submitted ? (
@@ -81,8 +125,16 @@ const TrendingAndRating = () => {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmitRating}>
-            {/* Star Picker */}
+<form
+  onSubmit={handleSubmitRating}
+  style={{
+    width: '100%',
+    maxWidth: '100%',
+    minWidth: 0,
+    boxSizing: 'border-box',
+  }}
+>
+{/* Star Picker */}
             <div style={{ display: 'flex', gap: '6px', marginBottom: '14px' }}>
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
@@ -130,6 +182,9 @@ const TrendingAndRating = () => {
               style={{
                 marginTop: '10px',
                 width: '100%',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
+                display: 'block',
                 padding: '10px',
                 backgroundColor: rating > 0 ? '#4f46e5' : '#94a3b8',
                 color: 'white',

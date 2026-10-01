@@ -49,9 +49,8 @@ function Requests() {
                 </button>
 
 
-  {request.status === "Pending" && (
     <>
-     <button
+    <button
   onClick={() => {
     setRequests(
       requests.map((r) =>
@@ -65,7 +64,7 @@ function Requests() {
   Accept
 </button>
 
-      <button
+  <button
   onClick={() => {
     setRequests(
       requests.map((r) =>
@@ -79,7 +78,6 @@ function Requests() {
   Reject
 </button>
     </>
-  )}
 
 </div>
         </div>

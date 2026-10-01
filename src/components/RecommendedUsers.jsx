@@ -61,12 +61,15 @@ const RecommendedUsers = ({ users = defaultUsers }) => {
       {/* Recommended Cards List */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-        gap: '16px'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px,100%), 1fr))',
+        gap: '16px',
+        boxSizing: 'border-box'
       }}>
         {users.map((user) => (
           <div key={user.id} style={{
             padding: '16px',
+            boxSizing: 'border-box',
+            minWidth: 0,
             borderRadius: '12px',
             border: '1px solid #f1f5f9',
             backgroundColor: '#f8fafc',

@@ -160,3 +160,95 @@
   cursor: not-allowed;
   opacity: 0.7;
 }
+/* Mobile responsive fix */
+@media (max-width: 768px) {
+  .session-page {
+    min-height: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 24px 12px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .session-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 24px 16px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .session-card h1 {
+    font-size: 26px;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .session-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .session-card form {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .form-group {
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    width: 100%;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-error {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+  }
+
+  .session-card button {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 10px;
+  }
+
+  .session-message {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+  }
+}

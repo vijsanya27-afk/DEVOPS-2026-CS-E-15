@@ -169,7 +169,7 @@ const Dashboard = () => {
         </div>
 
         {/* 5. Trending & Rating Section */}
-        <div className="dash-section dashboard-full-width">
+        <div className="dashboard-full-width">
           <TrendingAndRating />
         </div>
       </main>
