@@ -1,5 +1,5 @@
-import React , { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Outlet, NavLink } from 'react-router-dom';
 import './DashboardLayout.css';
 
 export default function DashboardLayout() {
@@ -9,8 +9,8 @@ export default function DashboardLayout() {
     className="dashboard-layout"
     style={{ display: 'flex', minHeight: '85vh', backgroundColor: '#f8fafc' }}
   >
-      {/* Left Sidebar - Ye ab har dashboard page par permanent dikhega */}
-      <div
+  {/* Left Sidebar - Ye ab har dashboard page par permanent dikhega */}
+  <div
   className={`dashboard-sidebar ${
     isSidebarOpen ? 'sidebar-open' : ''
   }`}
@@ -30,25 +30,49 @@ export default function DashboardLayout() {
 >
   ☰
 </button>
-  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '15px' }}>
+<ul className="sidebar-menu">
   <li>
-  <Link
-    to="/dashboard"
-    style={{
-      textDecoration: 'none',
-      color: '#4f46e5',
-      fontWeight: 'bold'
-    }}
-  >
-    Dashboard
-  </Link>
-</li> <li><Link to="/profile" style={{ textDecoration: 'none', color: '#333' }}>Profile</Link></li>
-          <li><Link to="/skills"  style={{ textDecoration: 'none', color: '#333' }}>Skills</Link></li>
-          <li><Link to="/search"  style={{ textDecoration: 'none', color: '#333' }}>Search</Link></li>
-          <li><Link to="/reviews"  style={{ textDecoration: 'none', color: '#333' }}>Reviews</Link></li>
-          <li><Link to="/requests" style={{ textDecoration: 'none', color: '#333' }}>Requests</Link></li>
-          <li><Link to="/upcoming-sessions"  style={{ textDecoration: 'none', color: '#333' }}>Upcoming Sessions</Link></li>
-        </ul>
+    <NavLink to="/dashboard" className="sidebar-link">
+      Dashboard
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink to="/profile" className="sidebar-link">
+      Profile
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink to="/skills" className="sidebar-link">
+      Skills
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink to="/search" className="sidebar-link">
+      Search
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink to="/reviews" className="sidebar-link">
+      Reviews
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink to="/requests" className="sidebar-link">
+      Requests
+    </NavLink>
+  </li>
+
+  <li>
+    <NavLink to="/upcoming-sessions" className="sidebar-link">
+      Upcoming Sessions
+    </NavLink>
+  </li>
+</ul>
       </div>
 
       {/* Main Content Area - Yahan par Profile, Skills, etc. ke pages badlenge */}

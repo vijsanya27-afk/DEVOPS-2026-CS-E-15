@@ -15,7 +15,7 @@ function Home() {
           Learn skills, share knowledge, and connect with others.
         </p>
 
-        <button onClick={() => navigate("/register")}>
+        <button onClick={() => navigate("/explore-skills")}>
            Explore Skills
            </button>
       </section>

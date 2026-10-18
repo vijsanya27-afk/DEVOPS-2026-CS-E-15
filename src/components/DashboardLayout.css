@@ -92,3 +92,45 @@
     padding-left: 262px !important;
   }
 }
+/* Sidebar menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-menu li {
+  width: 100%;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 11px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover effect */
+.sidebar-link:hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
+/* Active page: blue background */
+.sidebar-link.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Active page hover */
+.sidebar-link.active:hover {
+  background-color: #1d4ed8;
+  color: #ffffff;
+}

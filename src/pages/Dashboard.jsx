@@ -157,6 +157,26 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {/* Chat & Communication */}
+<div className="dash-section chat-card">
+  <div className="chat-card-icon">💬</div>
+
+  <div className="chat-card-content">
+    <h3>Chat & Communication</h3>
+    <p>Connect with your skill exchange partners and continue your conversations.</p>
+
+    <div className="chat-card-info">
+      <span>2 Active Conversations</span>
+    </div>
+
+    <button
+      className="btn-chat"
+      onClick={() => navigate("/exchange/chat")}
+    >
+      Open Chat →
+    </button>
+  </div>
+</div>
 
         {/* 3. Mutual Matches Section */}
         <div className="dash-section dashboard-full-width">

@@ -28,7 +28,7 @@ function Register() {
     alert("Password must be at least 6 characters");
     return;
   }
-
+   localStorage.setItem("userName", name);
    localStorage.setItem("userEmail", email);
    localStorage.setItem("userPassword", password);
 

@@ -31,6 +31,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0;
+  color: #0f172a;
 }
 
 .so-subtitle {
@@ -50,6 +51,9 @@
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  background-color: #ffffff;
+  color: #1e293b;
+  outline: none;
 }
 
 .so-add-btn {
@@ -103,58 +107,104 @@
   margin: -8px 0 12px 0;
 }
 /* --- IS BLOCK KO APNI CSS FILE KE LAST ME ADD KAREIN --- */
+/* Skills Offered layout correction */
 
 .so-page-wrapper {
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important; /* Screen ke bilkul center me lane ke liye */
-  min-height: calc(100vh - 70px) !important; /* Purapoora vertical center karega */
+  align-items: flex-start !important;
   width: 100% !important;
+  min-height: auto !important;
+  padding: 20px !important;
   box-sizing: border-box !important;
 }
-/* Box size aur elements ko bada karne ke liye overrides */
 
 .so-card-container {
-  width: 90% !important;
-  max-width: 800px !important;    /* Width badha kar 800px kar di */
-  min-height: 450px !important;   /* Box ki height badha di */
-  padding: 48px !important;       /* Inside padding badha di */
-  border-radius: 24px !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08) !important;
+  width: 100% !important;
+  max-width: 800px !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 32px !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07) !important;
+  box-sizing: border-box !important;
 }
 
-/* Titles ko bada karein */
 .so-title {
-  font-size: 2rem !important;
+  font-size: 1.8rem !important;
+  color: #0f172a !important;
 }
 
 .so-subtitle {
-  font-size: 1.1rem !important;
+  font-size: 1rem !important;
   margin-top: 8px !important;
-  margin-bottom: 32px !important;
-}
-
-/* Form Inputs aur Button ko bada karein */
-.so-form {
-  gap: 16px !important;
   margin-bottom: 24px !important;
 }
 
+.so-form {
+  width: 100% !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+}
+
 .so-input {
-  padding: 14px 18px !important;
-  font-size: 1.1rem !important;
-  border-radius: 10px !important;
+  min-width: 0 !important;
+  padding: 13px 15px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  background-color: #ffffff !important;
+  color: #1e293b !important;
 }
 
 .so-add-btn {
-  padding: 14px 28px !important;
-  font-size: 1.1rem !important;
-  border-radius: 10px !important;
+  padding: 12px 24px !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
 }
 
-/* Chips ko bada karein */
+.so-skills-list {
+  gap: 12px !important;
+  margin-top: 20px !important;
+}
+
 .so-skill-chip {
-  padding: 10px 20px !important;
-  font-size: 1rem !important;
-  border-radius: 20px !important;
+  padding: 9px 15px !important;
+  font-size: 0.95rem !important;
+  border-radius: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .so-page-wrapper {
+    padding: 12px !important;
+  }
+
+  .so-card-container {
+    padding: 22px !important;
+  }
+
+  .so-title {
+    font-size: 1.45rem !important;
+  }
+
+  .so-subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .so-card-container {
+    padding: 16px !important;
+  }
+
+  .so-form {
+    flex-direction: column !important;
+  }
+
+  .so-input,
+  .so-add-btn {
+    width: 100% !important;
+  }
 }

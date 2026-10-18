@@ -1,7 +1,9 @@
 import "./UpcomingSessions.css";
 
 function UpcomingSessions() {
-  const sessions = [
+  const savedSessions =
+  JSON.parse(localStorage.getItem("upcomingSessions")) || [];
+  const defaultSessions = [
     {
       id: 1,
       partner: "Rahul",
@@ -27,6 +29,7 @@ function UpcomingSessions() {
       status: "Pending",
     },
   ];
+  const sessions = [...defaultSessions, ...savedSessions];
   const handleViewDetails = (session) => {
     alert(
       `Session Details\n\nPartner: ${session.partner}\nSkill: ${session.skill}\nDate: ${session.date}\nTime: ${session.time}\nStatus: ${session.status}`
