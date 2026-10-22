@@ -66,6 +66,23 @@ setIsSubmitting(true);
 setMessage("");
 
 setTimeout(() => {
+  const newSession = {
+    id: Date.now(),
+    partner: formData.partner,
+    skill: formData.skill,
+    date: formData.date,
+    time: formData.time,
+    status: "Confirmed",
+    notes: formData.notes,
+  };
+
+  const existingSessions =
+    JSON.parse(localStorage.getItem("upcomingSessions")) || [];
+
+  localStorage.setItem(
+    "upcomingSessions",
+    JSON.stringify([...existingSessions, newSession])
+  );
   setIsSubmitting(false);
   setMessage("Session scheduled successfully!");
 

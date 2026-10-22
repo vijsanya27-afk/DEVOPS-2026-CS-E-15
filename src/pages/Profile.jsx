@@ -4,8 +4,8 @@ import './Profile.css';
 function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: 'Rohit',
-    email: 'rohit@gmail.com',
+    name: localStorage.getItem("userName") || "User",
+    email: localStorage.getItem("userEmail") || "",
     bio: 'Passionate learner and developer.',
     role: 'Student'
   });

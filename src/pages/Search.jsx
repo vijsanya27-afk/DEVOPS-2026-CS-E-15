@@ -1,4 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import './Search.css';
 
 const MOCK_USERS = [
   { id: 1, name: 'Sarah Connor', role: 'Frontend Developer', skill: 'React', level: 'Expert', category: 'Development', available: true },
@@ -8,6 +10,8 @@ const MOCK_USERS = [
 ];
 
 export default function UserSearch() {
+  const navigate = useNavigate();
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLevel, setSelectedLevel] = useState('All');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -66,13 +70,13 @@ export default function UserSearch() {
   };
 
   return (
-    <div style={{ maxWidth: '800px', margin: '2rem auto', padding: '1rem', fontFamily: 'sans-serif' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '1.5rem' }}>Search Users & Skill Filters</h2>
-
+    <div className="search-page">
+<h2 className="search-title">Search Users & Skill Filters</h2>
       {/* Filter Section Controls */}
-      <div style={{ backgroundColor: '#f8fafc', padding: '1.5rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid #e2e8f0' }}>
+      <div className="search-filters">
         <input
           type="text"
+          className="search-input"
           placeholder="Search by name, skill, or role..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -129,19 +133,37 @@ export default function UserSearch() {
 
       {/* Render Filtered User List */}
       {!loading && !error && (
-        <div>
-          {filteredUsers.length > 0 ? (
+      <div className="search-results">
+  {filteredUsers.length > 0 ? (
             filteredUsers.map((user) => (
-              <div key={user.id} style={{ padding: '1rem', border: '1px solid #ddd', borderRadius: '6px', marginBottom: '0.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff' }}>
+              <div key={user.id} className="user-card">
                 <div>
                   <h4 style={{ margin: '0 0 0.25rem 0' }}>{user.name} <span style={{ fontSize: '0.8rem', color: '#666', fontWeight: 'normal' }}>({user.role})</span></h4>
                   <p style={{ margin: 0, fontSize: '0.85rem', color: '#555' }}>
                     {user.skill} • <strong>{user.level}</strong> ({user.category})
                   </p>
                 </div>
-                <span style={{ fontSize: '0.8rem', padding: '0.2rem 0.5rem', borderRadius: '4px', backgroundColor: user.available ? '#d1fae5' : '#f3f4f6', color: user.available ? '#065f46' : '#374151' }}>
-                  {user.available ? 'Available' : 'Busy'}
-                </span>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '8px' }}>
+  <span style={{ fontSize: '0.8rem', padding: '0.2rem 0.5rem', borderRadius: '4px', backgroundColor: user.available ? '#d1fae5' : '#f3f4f6', color: user.available ? '#065f46' : '#374151' }}>
+    {user.available ? 'Available' : 'Busy'}
+  </span>
+
+  <button
+    onClick={() => navigate("/exchange/request")}
+    style={{
+      padding: '7px 12px',
+      border: 'none',
+      borderRadius: '6px',
+      backgroundColor: '#4f46e5',
+      color: '#fff',
+      cursor: 'pointer',
+      fontWeight: '600',
+      fontSize: '13px'
+    }}
+  >
+    Request Exchange
+  </button>
+</div>
               </div>
             ))
           ) : (

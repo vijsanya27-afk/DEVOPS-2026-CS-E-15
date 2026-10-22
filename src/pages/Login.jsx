@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -7,6 +7,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogin = (event) => {
   event.preventDefault();
@@ -36,7 +37,8 @@ function Login() {
 
         if (email === savedEmail && password === savedPassword) {
           alert("Login successful!");
-          navigate("/dashboard");
+          const redirectPath = location.state?.from || "/dashboard";
+          navigate(redirectPath);
             } else {
             alert("Invalid email or password!");
         }

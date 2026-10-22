@@ -20,6 +20,7 @@ import Chat from "./exchange/pages/Chat";
 import SessionScheduling from "./pages/SessionScheduling";
 import UpcomingSessions from "./pages/UpcomingSessions";
 import "./App.css";
+import ExploreSkills from "./pages/ExploreSkills";
 
 function App() {
   return (
@@ -51,7 +52,7 @@ function App() {
           <Route path="/session-scheduling" element={<SessionScheduling />} />
           <Route path="/upcoming-sessions" element={<UpcomingSessions />} />
         </Route>
-
+        <Route path="/explore-skills" element={<ExploreSkills />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

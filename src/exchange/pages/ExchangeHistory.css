@@ -7,13 +7,13 @@
   
   .exchange-history h1 {
     font-size: 32px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #222 !important;
   }
   
   .exchange-history > p {
     color: #555 !important;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
   
   .exchange-history-card {
@@ -30,10 +30,10 @@
   
   .history-item {
     border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 18px;
+    border-radius: 12px;
+    padding: 20px;
     margin-bottom: 15px;
-    background: #f9f9f9;
+    background: #ffffff;
     color: #222 !important;
   }
   
@@ -63,10 +63,6 @@
   }
   
   .history-item {
-    padding: 20px;
-    border-radius: 12px;
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
   
@@ -85,20 +81,3 @@
       grid-template-columns: 1fr;
     }
   }
-.exchange-history {
-  padding: 32px;
-}
-
-.exchange-history h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.exchange-history-card {
-  padding: 24px;
-  border-radius: 12px;
-}
-
-.history-item {
-  border-radius: 12px;
-}
