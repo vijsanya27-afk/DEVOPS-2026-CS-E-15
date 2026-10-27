@@ -1,16 +1,21 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import ExchangeLayout from "../components/ExchangeLayout";
 import RequestModal from "../components/RequestModal";
 import "./ExchangeRequest.css";
 
 function ExchangeRequest() {
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
-  const [yourSkill, setYourSkill] = useState("");
-  const [learningSkill, setLearningSkill] = useState("");
+const [yourSkill, setYourSkill] = useState("");
+const [learningSkill, setLearningSkill] = useState(
+  location.state?.selectedSkill || ""
+);
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [createdRequest, setCreatedRequest] = useState(null);
 
   const request = {
     name: "Priya",
@@ -37,10 +42,32 @@ function ExchangeRequest() {
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
     
-      setTimeout(() => {
-        setIsSubmitting(false);
+      try {
+        const savedRequests = JSON.parse(
+          localStorage.getItem("skillExchangeRequests") || "[]"
+        );
+        const request = {
+          id: `local-${Date.now()}`,
+          name: "Priya",
+          skill: learningSkill.trim(),
+          skillOffered: yourSkill.trim(),
+          skillWanted: learningSkill.trim(),
+          status: "Pending",
+          createdAt: new Date().toISOString()
+        };
+     localStorage.setItem(
+          "skillExchangeRequests",
+          JSON.stringify([...savedRequests, request])
+        );
+        setCreatedRequest(request);
         setShowModal(true);
-      }, 700);
+      } catch {
+        setErrors({
+          form: "Unable to save the request. Please try again."
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -114,7 +141,7 @@ function ExchangeRequest() {
           </form>
         </div>
 
-        {showModal && (
+        {showModal && createdRequest && (
           <RequestModal
             request={request}
             onClose={() => setShowModal(false)}

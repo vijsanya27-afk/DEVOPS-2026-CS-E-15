@@ -63,11 +63,18 @@ function ExploreSkills() {
 
             <span className="skill-level">{skill.level}</span>
 
-            <button onClick={() => navigate("/login",{
-                    state: { from: "/exchange/request" },
-            })}>
-              Request Exchange
-            </button>
+          <button
+          onClick={() =>
+          navigate("/login", {
+          state: {
+          from: "/exchange/request",
+          selectedSkill: skill.name,
+      },
+    })
+  }
+>
+  Request Exchange
+</button>
           </div>
         ))}
       </section>

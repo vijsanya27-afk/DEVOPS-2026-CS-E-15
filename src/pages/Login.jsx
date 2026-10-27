@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate , useLocation } from "react-router-dom";
 import "./Login.css";
+import { apiRequest } from "../services/api";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -9,7 +10,7 @@ function Login() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
   event.preventDefault();
 
   if (email.trim() === "") {
@@ -38,7 +39,12 @@ function Login() {
         if (email === savedEmail && password === savedPassword) {
           alert("Login successful!");
           const redirectPath = location.state?.from || "/dashboard";
-          navigate(redirectPath);
+        navigate(redirectPath, {
+state: {
+selectedSkill: location.state?.selectedSkill,
+},
+});
+
             } else {
             alert("Invalid email or password!");
         }
